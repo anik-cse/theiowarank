@@ -40,7 +40,7 @@
     </div>
     <!-- ./Statistics Cards -->
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
+    {{-- <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
 
       <!-- Social Traffic -->
       <div class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">
@@ -573,5 +573,5 @@
         </ul>
       </div>
     </div>
-    <!-- ./External resources -->
+    <!-- ./External resources --> --}}
 </div>
