@@ -1,4 +1,9 @@
 <div class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+    @section('css')
+    <link rel="stylesheet" href="{{ mix('css/select2.tailwind.css') }}">
+    <style>
+    </style>
+    @endsection
     {{-- Care about people's approval and you will be their prisoner. --}}
     <div class="flex">
         <h2 class="text-3xl font-bold dark:text-gray-200">events</h2>
@@ -78,18 +83,37 @@
                         <x-jet-input id="city" class="block mt-2 w-full" type="text" name="city" placeholder="City" :value="old('city')" required autocomplete="city" />
                         <x-jet-input-error for="city" class="mt-2" />
 
-                        <x-jet-input id="region" class="block mt-2 w-full" type="text" name="region" placeholder="City" :value="old('region')" required autocomplete="region" />
+                        <x-jet-input id="region" class="block mt-2 w-full" type="text" name="region" placeholder="Region" :value="old('region')" required autocomplete="region" />
                         <x-jet-input-error for="region" class="mt-2" />
 
                         <x-jet-input id="post_code" class="block mt-2 w-full" type="text" name="post_code" placeholder="Post Code" :value="old('post_code')" required autocomplete="post_code" />
                         <x-jet-input-error for="post_code" class="mt-2" />
-
-                        <x-jet-input id="city" class="block mt-2 w-full" type="month" name="city" placeholder="City" :value="old('city')" required autocomplete="city" />
-                        <x-jet-input-error for="city" class="mt-2" />
+                        
+                        <div class="mt-2">
+                        <select style="width: 100%" 
+                        data-placeholder="Select a country"
+                        data-allow-clear="false"
+                        title="Select country"
+                        class="select-single" name="country" wire:ignore>
+                            @foreach($countries as $key => $country)
+                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                            @endforeach
+                        </select>
+                        <x-jet-input-error for="country" class="mt-2" />
+                        </div>
                     </div>
                 </x-slot>
             </x-form-section>
         </div>
         <div class="md:col-start-8 md:col-end-10 px-6">sdfgfg</div>
     </div>
+    @push('scripts')
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select-single').select2();
+        });
+    </script>
+    @endpush
 </div>

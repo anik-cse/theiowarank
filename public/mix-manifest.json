@@ -5,6 +5,7 @@
     "/css/htag.css": "/css/htag.css",
     "/css/ckeditor.css": "/css/ckeditor.css",
     "/css/flickity.min.css": "/css/flickity.min.css",
+    "/css/select2.tailwind.css": "/css/select2.tailwind.css",
     "/js/jquery.js": "/js/jquery.js",
     "/js/custom.js": "/js/custom.js",
     "/js/flickity.pkgd.min.js": "/js/flickity.pkgd.min.js",
