@@ -22,7 +22,7 @@
     </div>
 
     <div class="grid md:grid-cols-10 py-20">
-        <div class="md:col-start-1 md:col-end-4 px-6">
+        <div class="md:col-start-1 md:col-end-4 md:px-6">
             <table class="table-auto border-separate my-table-spacing text-left">
                 <thead>
                   <tr>
@@ -61,13 +61,67 @@
                 </tbody>
               </table>
         </div>
-        <div class="md:col-start-4 md:col-end-8 px-6 border-l-4 border-slate-900">
+        <div class="md:col-start-4 md:col-end-8 md:px-6 md:border-l-4 md:border-slate-900">
             <x-form-section submit="">
                 <x-slot name="form">
-                    <div class="col-span-12 sm:col-span-12 py-4">
+                    <div class="col-span-12 sm:col-span-12 py-2">
                         <x-jet-label for="name" class="font-bold" value="{{ __('Name *') }}" />
                         <x-jet-input id="name" class="block mt-2 w-full" type="text" name="name" placeholder="Name" :value="old('name')" required autocomplete="name" />
                         <x-jet-input-error for="name" class="mt-2" />
+                    </div>
+                    <div class="col-span-12 sm:col-span-12 py-4">
+                        <x-jet-label for="start_date" class="font-bold" value="{{ __('Start date *') }}" />
+                        <div class="flex flex-wrap mb-2 mt-2">
+                            <div class="w-full md:w-1/4 px-1 mb-6 md:mb-0">
+                                <x-jet-input id="date" class="block mt-2 w-full" type="text" name="date" placeholder="01" :value="old('date')" required autocomplete="date" />
+                            </div>
+                            <div class="w-full md:w-2/4 px-1 mt-2 mb-6 md:mb-0">
+                                <x-select class="block w-full" name="month">
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </x-select>
+                            </div>
+                            <div class="w-full md:w-1/4 px-1 mb-6 md:mb-0">
+                                <x-jet-input id="year" class="block mt-2 w-full" type="text" name="year" placeholder="2022" :value="old('year')" required autocomplete="year" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 sm:col-span-12 py-4">
+                        <x-jet-label for="end_date" class="font-bold" value="{{ __('End date *') }}" />
+                        <div class="flex flex-wrap mb-2 mt-2">
+                            <div class="w-full md:w-1/4 px-1 mb-6 md:mb-0">
+                                <x-jet-input id="date" class="block mt-2 w-full" type="text" name="date" placeholder="01" :value="old('date')" required autocomplete="date" />
+                            </div>
+                            <div class="w-full md:w-2/4 px-1 mt-2 mb-6 md:mb-0">
+                                <x-select class="block w-full" name="month">
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </x-select>
+                            </div>
+                            <div class="w-full md:w-1/4 px-1 mb-6 md:mb-0">
+                                <x-jet-input id="year" class="block mt-2 w-full" type="text" name="year" placeholder="2022" :value="old('year')" required autocomplete="year" />
+                            </div>
+                        </div>
                     </div>
                     <div class="col-span-12 sm:col-span-12 py-4">
                         <x-jet-label for="address" class="font-bold" value="{{ __('Location *') }}" />
@@ -90,7 +144,7 @@
                         <x-jet-input-error for="post_code" class="mt-2" />
                         
                         <div class="mt-2">
-                        <select style="width: 100%" 
+                        <x-select style="width: 100%" 
                         data-placeholder="Select a country"
                         data-allow-clear="false"
                         title="Select country"
@@ -98,14 +152,44 @@
                             @foreach($countries as $key => $country)
                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                             @endforeach
-                        </select>
+                        </x-select>
                         <x-jet-input-error for="country" class="mt-2" />
                         </div>
                     </div>
+                    <div class="col-span-12 sm:col-span-12 py-1">
+                        <x-jet-label for="type" class="font-bold" value="{{ __('Type') }}" />
+                        <x-select class="block w-full" name="type">
+                            <option value="">Profesional</option>
+                        </x-select>
+                    </div>
+                    <div class="col-span-12 sm:col-span-12 py-1">
+                        <x-jet-label for="organization" class="font-bold" value="{{ __('Organization') }}" />
+                        <x-jet-input id="organization" class="block mt-2 w-full" type="text" name="organization" placeholder="Organization" :value="old('organization')" autocomplete="organization" />
+                        <x-jet-input-error for="organization" class="mt-2" />
+                    </div>
+                    <div class="col-span-12 sm:col-span-12 py-1">
+                        <x-jet-label for="email" class="font-bold" value="{{ __('Email *') }}" />
+                        <x-jet-input id="email" class="block mt-2 w-full" type="text" name="email" placeholder="your@mail.com" :value="old('email')" required autocomplete="email" />
+                        <x-jet-input-error for="email" class="mt-2" />
+                    </div>
+                    <div class="col-span-12 sm:col-span-12 py-1">
+                        <x-jet-label for="phone" class="font-bold" value="{{ __('Phone') }}" />
+                        <x-jet-input id="phone" class="block mt-2 w-2/4" type="tel" name="phone" placeholder="+11234567890" :value="old('phone')" pattern="[+]{1}[0-9]{11,14}" autocomplete="phone" />
+                        <x-jet-input-error for="email" class="mt-2" />
+                    </div>
+                </x-slot>
+                <x-slot name="actions">
+                    <x-button class="bg-purple-500 hover:bg-purple-400">
+                        {{ __('Save') }}
+                    </x-button>
                 </x-slot>
             </x-form-section>
         </div>
-        <div class="md:col-start-8 md:col-end-10 px-6">sdfgfg</div>
+        <div class="md:col-start-8 md:col-end-10 px-6 mt-5">
+            <div class="py-2">
+                dasfsdfdgf
+            </div>
+        </div>
     </div>
     @push('scripts')
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
