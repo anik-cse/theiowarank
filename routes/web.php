@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'],function () {
         ]);
         Route::view('/add-user', 'admin.add-user')->name('add.user');
         Route::view('/events', 'admin.events')->name('events');
+        Route::view('/riders', 'admin.riders')->name('riders');
         Route::resource('pages', PagesController::class);
         Route::post('/ckeditor-img', [CkeditorImageController::class, 'store'])->name('ckeditor.img.upload');
     });

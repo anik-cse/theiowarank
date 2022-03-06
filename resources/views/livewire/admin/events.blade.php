@@ -62,9 +62,12 @@
               </table>
         </div>
         <div class="md:col-start-4 md:col-end-8 md:px-6 md:border-l-4 md:border-slate-900">
+            <div class="h-6 px-4 text-2xl md:text-3xl font-bold dark:text-gray-200">
+                <span>Float Life Fest (2019)</span>
+            </div>
             <x-form-section submit="">
                 <x-slot name="form">
-                    <div class="col-span-12 sm:col-span-12 py-2">
+                    <div class="col-span-12 sm:col-span-12 md:py-2">
                         <x-jet-label for="name" class="font-bold" value="{{ __('Name *') }}" />
                         <x-jet-input id="name" class="block mt-2 w-full" type="text" name="name" placeholder="Name" :value="old('name')" required autocomplete="name" />
                         <x-jet-input-error for="name" class="mt-2" />
@@ -72,10 +75,10 @@
                     <div class="col-span-12 sm:col-span-12 py-4">
                         <x-jet-label for="start_date" class="font-bold" value="{{ __('Start date *') }}" />
                         <div class="flex flex-wrap mb-2 mt-2">
-                            <div class="w-full md:w-1/4 px-1 mb-6 md:mb-0">
+                            <div class="w-full md:w-1/4 mb-6 md:mb-0">
                                 <x-jet-input id="date" class="block mt-2 w-full" type="text" name="date" placeholder="01" :value="old('date')" required autocomplete="date" />
                             </div>
-                            <div class="w-full md:w-2/4 px-1 mt-2 mb-6 md:mb-0">
+                            <div class="w-full md:w-2/4 px-2 mt-2 mb-6 md:mb-0">
                                 <x-select class="block w-full" name="month">
                                     <option value="01">January</option>
                                     <option value="02">February</option>
@@ -91,7 +94,7 @@
                                     <option value="12">December</option>
                                 </x-select>
                             </div>
-                            <div class="w-full md:w-1/4 px-1 mb-6 md:mb-0">
+                            <div class="w-full md:w-1/4 mb-6 md:mb-0">
                                 <x-jet-input id="year" class="block mt-2 w-full" type="text" name="year" placeholder="2022" :value="old('year')" required autocomplete="year" />
                             </div>
                         </div>
@@ -99,10 +102,10 @@
                     <div class="col-span-12 sm:col-span-12 py-4">
                         <x-jet-label for="end_date" class="font-bold" value="{{ __('End date *') }}" />
                         <div class="flex flex-wrap mb-2 mt-2">
-                            <div class="w-full md:w-1/4 px-1 mb-6 md:mb-0">
+                            <div class="w-full md:w-1/4 mb-6 md:mb-0">
                                 <x-jet-input id="date" class="block mt-2 w-full" type="text" name="date" placeholder="01" :value="old('date')" required autocomplete="date" />
                             </div>
-                            <div class="w-full md:w-2/4 px-1 mt-2 mb-6 md:mb-0">
+                            <div class="w-full md:w-2/4 px-2 mt-2 mb-6 md:mb-0">
                                 <x-select class="block w-full" name="month">
                                     <option value="01">January</option>
                                     <option value="02">February</option>
@@ -118,7 +121,7 @@
                                     <option value="12">December</option>
                                 </x-select>
                             </div>
-                            <div class="w-full md:w-1/4 px-1 mb-6 md:mb-0">
+                            <div class="w-full md:w-1/4 mb-6 md:mb-0">
                                 <x-jet-input id="year" class="block mt-2 w-full" type="text" name="year" placeholder="2022" :value="old('year')" required autocomplete="year" />
                             </div>
                         </div>
@@ -158,7 +161,7 @@
                     </div>
                     <div class="col-span-12 sm:col-span-12 py-1">
                         <x-jet-label for="type" class="font-bold" value="{{ __('Type') }}" />
-                        <x-select class="block w-full" name="type">
+                        <x-select class="block mt-2 w-full" name="type">
                             <option value="">Profesional</option>
                         </x-select>
                     </div>
@@ -185,9 +188,26 @@
                 </x-slot>
             </x-form-section>
         </div>
-        <div class="md:col-start-8 md:col-end-10 px-6 mt-5">
-            <div class="py-2">
-                dasfsdfdgf
+        <div class="md:col-start-8 md:col-end-11 px-6 mt-5">
+            <div class="py-6">
+                <x-jet-label class="font-bold py-2" value="{{ __('Races') }}" />
+                <div class="py-3 md:px-2">
+                    <p class="text-sm">Women's Final</p>
+                    <p class="text-xs font-bold">dowlhill, trail, <5k, women </p>
+                </div>
+                <div class="py-3 md:px-2">
+                    <p class="text-sm">Women's Final</p>
+                    <p class="text-xs font-bold">dowlhill, trail, <5k, women </p>
+                </div>
+                <div class="py-3 md:px-2">
+                    <p class="text-sm">Women's Final</p>
+                    <p class="text-xs font-bold">dowlhill, trail, <5k, women </p>
+                </div>
+                <div class="py-2">
+                    <button class="shadow md:col-start-1 md:col-end-1 bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white py-2 px-4" type="button">
+                        Add Race
+                    </button>
+                </div>
             </div>
         </div>
     </div>
