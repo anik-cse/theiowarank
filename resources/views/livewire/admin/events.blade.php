@@ -80,18 +80,9 @@
                             </div>
                             <div class="w-full md:w-2/4 px-2 mt-2 mb-6 md:mb-0">
                                 <x-select class="block w-full" name="month">
-                                    <option value="01">January</option>
-                                    <option value="02">February</option>
-                                    <option value="03">March</option>
-                                    <option value="04">April</option>
-                                    <option value="05">May</option>
-                                    <option value="06">June</option>
-                                    <option value="07">July</option>
-                                    <option value="08">August</option>
-                                    <option value="09">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
+                                    @foreach ($months as $key => $month)
+                                    <option value="{{ $key }}">{{ $month }}</option>
+                                    @endforeach
                                 </x-select>
                             </div>
                             <div class="w-full md:w-1/4 mb-6 md:mb-0">
@@ -107,18 +98,9 @@
                             </div>
                             <div class="w-full md:w-2/4 px-2 mt-2 mb-6 md:mb-0">
                                 <x-select class="block w-full" name="month">
-                                    <option value="01">January</option>
-                                    <option value="02">February</option>
-                                    <option value="03">March</option>
-                                    <option value="04">April</option>
-                                    <option value="05">May</option>
-                                    <option value="06">June</option>
-                                    <option value="07">July</option>
-                                    <option value="08">August</option>
-                                    <option value="09">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
+                                    @foreach ($months as $key => $month)
+                                    <option value="{{ $key }}">{{ $month }}</option>
+                                    @endforeach
                                 </x-select>
                             </div>
                             <div class="w-full md:w-1/4 mb-6 md:mb-0">
@@ -162,7 +144,9 @@
                     <div class="col-span-12 sm:col-span-12 py-1">
                         <x-jet-label for="type" class="font-bold" value="{{ __('Type') }}" />
                         <x-select class="block mt-2 w-full" name="type">
-                            <option value="">Profesional</option>
+                            @foreach ($event_types as $type)
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>  
+                            @endforeach
                         </x-select>
                     </div>
                     <div class="col-span-12 sm:col-span-12 py-1">
