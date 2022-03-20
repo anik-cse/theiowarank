@@ -15,7 +15,7 @@ class CreateRaceLengthsTable extends Migration
     {
         Schema::create('race_lengths', function (Blueprint $table) {
             $table->id();
-            $table->string('lenght');
+            $table->string('length');
             $table->timestamps();
         });
     }

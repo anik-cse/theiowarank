@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class RaceLength extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'length',
+    ];
 }

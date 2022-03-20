@@ -20,15 +20,15 @@ class CreateEventsTable extends Migration
             $table->string('end_date');
             $table->string('venue');
             $table->string('address_one');
-            $table->string('address_two');
+            $table->string('address_two')->nullable();
             $table->string('city');
             $table->string('region');
             $table->string('post_code');
             $table->foreignId('country');
-            $table->foreignId('type');
-            $table->string('organization');
+            $table->foreignId('type')->nullable();
+            $table->string('organization')->nullable();
             $table->string('email');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }

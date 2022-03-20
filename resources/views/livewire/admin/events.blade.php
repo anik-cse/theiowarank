@@ -31,146 +31,135 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="py-4">
-                        <p class="text-sm">Float Life Feast(2020)</p>
-                        <p class="text-xs font-bold">Austin, TX, US</p>
-                    </td>
-                    <td class="py-4 pl-4">
-                        <p class="text-sm">Profesional</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="py-4">
-                        <p class="text-sm">Float Life Feast(2020)</p>
-                        <p class="text-xs font-bold">Austin, TX, US</p>
-                    </td>
-                    <td class="py-4 pl-4">
-                        <p class="text-sm">Profesional</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="py-4">
-                        <p class="text-sm">International Float Life Feast(2020)</p>
-                        <p class="text-xs font-bold">Austin, TX, US</p>
-                    </td>
-                    <td class="py-4 pl-4">
-                        <p class="text-sm">Profesional</p>
-                    </td>
-                  </tr>
+                    @foreach ($events as $event)
+                    <tr>
+                        <td class="py-4">
+                            <p class="text-sm">{{ $event->name }}</p>
+                            <p class="text-xs font-bold">{{ $event->city }}, {{ $event->region }}, {{ $event->iso }}</p>
+                        </td>
+                        <td class="py-4 pl-4">
+                            <p class="text-sm">{{ $event->type }}</p>
+                        </td>
+                      </tr>  
+                    @endforeach
                 </tbody>
               </table>
         </div>
         <div class="md:col-start-4 md:col-end-8 md:px-6 md:border-l-4 md:border-slate-900">
-            <div class="h-6 px-4 text-2xl md:text-3xl font-bold dark:text-gray-200">
-                <span>Float Life Fest (2019)</span>
+            <div class="h-6 text-2xl md:text-3xl font-bold dark:text-gray-200">
+                <span>{{ $name }}</span>
             </div>
-            <x-form-section submit="">
-                <x-slot name="form">
-                    <div class="col-span-12 sm:col-span-12 md:py-2">
-                        <x-jet-label for="name" class="font-bold" value="{{ __('Name *') }}" />
-                        <x-jet-input id="name" class="block mt-2 w-full" type="text" name="name" placeholder="Name" :value="old('name')" required autocomplete="name" />
-                        <x-jet-input-error for="name" class="mt-2" />
+            <div class="col-span-12 sm:col-span-12 md:py-2">
+                <x-jet-label for="name" class="font-bold" value="{{ __('Name *') }}" />
+                <x-jet-input id="name" class="block mt-2 w-full" type="text" wire:model="name" placeholder="Name" :value="old('name')" autocomplete="name" />
+                <x-jet-input-error for="name" class="mt-2" />
+            </div>
+            <div class="col-span-12 sm:col-span-12 py-4">
+                <x-jet-label for="start_date" class="font-bold" value="{{ __('Start date *') }}" />
+                <div class="flex flex-wrap mb-2 mt-2">
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <x-jet-input id="date" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="start_day" placeholder="01" :value="old('start_day')" autocomplete="day" />
+                        <x-jet-input-error for="start_day" class="mt-2" />
                     </div>
-                    <div class="col-span-12 sm:col-span-12 py-4">
-                        <x-jet-label for="start_date" class="font-bold" value="{{ __('Start date *') }}" />
-                        <div class="flex flex-wrap mb-2 mt-2">
-                            <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                                <x-jet-input id="date" class="block mt-2 w-full" type="text" name="date" placeholder="01" :value="old('date')" required autocomplete="date" />
-                            </div>
-                            <div class="w-full md:w-2/4 px-2 mt-2 mb-6 md:mb-0">
-                                <x-select class="block w-full" name="month">
-                                    @foreach ($months as $key => $month)
-                                    <option value="{{ $key }}">{{ $month }}</option>
-                                    @endforeach
-                                </x-select>
-                            </div>
-                            <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                                <x-jet-input id="year" class="block mt-2 w-full" type="text" name="year" placeholder="2022" :value="old('year')" required autocomplete="year" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-12 sm:col-span-12 py-4">
-                        <x-jet-label for="end_date" class="font-bold" value="{{ __('End date *') }}" />
-                        <div class="flex flex-wrap mb-2 mt-2">
-                            <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                                <x-jet-input id="date" class="block mt-2 w-full" type="text" name="date" placeholder="01" :value="old('date')" required autocomplete="date" />
-                            </div>
-                            <div class="w-full md:w-2/4 px-2 mt-2 mb-6 md:mb-0">
-                                <x-select class="block w-full" name="month">
-                                    @foreach ($months as $key => $month)
-                                    <option value="{{ $key }}">{{ $month }}</option>
-                                    @endforeach
-                                </x-select>
-                            </div>
-                            <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                                <x-jet-input id="year" class="block mt-2 w-full" type="text" name="year" placeholder="2022" :value="old('year')" required autocomplete="year" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-12 sm:col-span-12 py-4">
-                        <x-jet-label for="address" class="font-bold" value="{{ __('Location *') }}" />
-                        <x-jet-input id="venue_name" class="block mt-2 w-full" type="text" name="venue_name" placeholder="Venue name" :value="old('venue_name')" required autocomplete="venue_name" />
-                        <x-jet-input-error for="venue_name" class="mt-2" />
-
-                        <x-jet-input id="address_one" class="block mt-2 w-full" type="text" name="address_one" placeholder="Address" :value="old('address_one')" required autocomplete="address_one" />
-                        <x-jet-input-error for="address_one" class="mt-2" />
-
-                        <x-jet-input id="address_two" class="block mt-2 w-full" type="text" name="address_two" placeholder="Address" :value="old('address_one')" required autocomplete="address_two" />
-                        <x-jet-input-error for="address_one" class="mt-2" />
-
-                        <x-jet-input id="city" class="block mt-2 w-full" type="text" name="city" placeholder="City" :value="old('city')" required autocomplete="city" />
-                        <x-jet-input-error for="city" class="mt-2" />
-
-                        <x-jet-input id="region" class="block mt-2 w-full" type="text" name="region" placeholder="Region" :value="old('region')" required autocomplete="region" />
-                        <x-jet-input-error for="region" class="mt-2" />
-
-                        <x-jet-input id="post_code" class="block mt-2 w-full" type="text" name="post_code" placeholder="Post Code" :value="old('post_code')" required autocomplete="post_code" />
-                        <x-jet-input-error for="post_code" class="mt-2" />
-                        
-                        <div class="mt-2">
-                        <x-select style="width: 100%" 
-                        data-placeholder="Select a country"
-                        data-allow-clear="false"
-                        title="Select country"
-                        class="select-single" name="country" wire:ignore>
-                            @foreach($countries as $key => $country)
-                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                    <div class="w-full md:w-2/4 px-2 mt-2 mb-6 md:mb-0">
+                        <x-select class="block w-full" wire:model.debounce.800ms="start_month">
+                            <option value="">Select a month</option>
+                            @foreach ($months as $key => $month)
+                            <option value="{{ $key }}">{{ $month }}</option>
                             @endforeach
                         </x-select>
-                        <x-jet-input-error for="country" class="mt-2" />
-                        </div>
+                        <x-jet-input-error for="start_month" class="mt-2" />
                     </div>
-                    <div class="col-span-12 sm:col-span-12 py-1">
-                        <x-jet-label for="type" class="font-bold" value="{{ __('Type') }}" />
-                        <x-select class="block mt-2 w-full" name="type">
-                            @foreach ($event_types as $type)
-                            <option value="{{ $type->id }}">{{ $type->name }}</option>  
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <x-jet-input id="year" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="start_year" placeholder="2022" :value="old('start_year')" autocomplete="year" />
+                        <x-jet-input-error for="start_year" class="mt-2" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12 sm:col-span-12 py-4">
+                <x-jet-label for="end_date" class="font-bold" value="{{ __('End date *') }}" />
+                <div class="flex flex-wrap mb-2 mt-2">
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <x-jet-input id="date" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="end_day" placeholder="01" :value="old('end_day')" autocomplete="day" />
+                        <x-jet-input-error for="end_day" class="mt-2" />
+                    </div>
+                    <div class="w-full md:w-2/4 px-2 mt-2 mb-6 md:mb-0">
+                        <x-select class="block w-full" wire:model.debounce.800ms="end_month">
+                            <option value="">Select a month</option>
+                            @foreach ($months as $key => $month)
+                            <option value="{{ $key }}">{{ $month }}</option>
                             @endforeach
                         </x-select>
+                        <x-jet-input-error for="end_month" class="mt-2" />
                     </div>
-                    <div class="col-span-12 sm:col-span-12 py-1">
-                        <x-jet-label for="organization" class="font-bold" value="{{ __('Organization') }}" />
-                        <x-jet-input id="organization" class="block mt-2 w-full" type="text" name="organization" placeholder="Organization" :value="old('organization')" autocomplete="organization" />
-                        <x-jet-input-error for="organization" class="mt-2" />
+                    <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                        <x-jet-input id="year" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="end_year" placeholder="2022" :value="old('end_year')" autocomplete="year" />
+                        <x-jet-input-error for="end_year" class="mt-2" />
                     </div>
-                    <div class="col-span-12 sm:col-span-12 py-1">
-                        <x-jet-label for="email" class="font-bold" value="{{ __('Email *') }}" />
-                        <x-jet-input id="email" class="block mt-2 w-full" type="text" name="email" placeholder="your@mail.com" :value="old('email')" required autocomplete="email" />
-                        <x-jet-input-error for="email" class="mt-2" />
-                    </div>
-                    <div class="col-span-12 sm:col-span-12 py-1">
-                        <x-jet-label for="phone" class="font-bold" value="{{ __('Phone') }}" />
-                        <x-jet-input id="phone" class="block mt-2 w-2/4" type="tel" name="phone" placeholder="+11234567890" :value="old('phone')" pattern="[+]{1}[0-9]{11,14}" autocomplete="phone" />
-                        <x-jet-input-error for="email" class="mt-2" />
-                    </div>
-                </x-slot>
-                <x-slot name="actions">
-                    <x-button class="bg-purple-500 hover:bg-purple-400">
-                        {{ __('Save') }}
-                    </x-button>
-                </x-slot>
-            </x-form-section>
+                </div>
+            </div>
+            <div class="col-span-12 sm:col-span-12 py-4">
+                <x-jet-label for="venue_name" class="font-bold" value="{{ __('Location *') }}" />
+                <x-jet-input id="venue_name" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="venue" placeholder="Venue name" :value="old('venue')" autocomplete="venue_name" />
+                <x-jet-input-error for="venue" class="mt-2" />
+
+                <x-jet-input id="address_one" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="address_one" placeholder="Address" :value="old('address_one')" autocomplete="address_one" />
+                <x-jet-input-error for="address_one" class="mt-2" />
+
+                <x-jet-input id="address_two" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="address_two" placeholder="Address" :value="old('address_one')" autocomplete="address_two" />
+                <x-jet-input-error for="address_two" class="mt-2" />
+
+                <x-jet-input id="city" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="city" placeholder="City" :value="old('city')" autocomplete="city" />
+                <x-jet-input-error for="city" class="mt-2" />
+
+                <x-jet-input id="region" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="region" placeholder="Region" :value="old('region')" autocomplete="region" />
+                <x-jet-input-error for="region" class="mt-2" />
+
+                <x-jet-input id="post_code" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="post_code" placeholder="Post Code" :value="old('post_code')" autocomplete="post_code" />
+                <x-jet-input-error for="post_code" class="mt-2" />
+                
+                <div class="mt-2" wire:ignore>
+                <x-select style="width: 100%" 
+                data-placeholder="Select a country"
+                data-allow-clear="false"
+                title="Select country"
+                class="select-single">
+                    <option value="">Select a country</option>
+                    @foreach($countries as $key => $country)
+                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                    @endforeach
+                </x-select>
+                <x-jet-input-error for="country" class="mt-2" />
+                </div>
+            </div>
+            <div class="col-span-12 sm:col-span-12 py-1">
+                <x-jet-label for="type" class="font-bold" value="{{ __('Type') }}" />
+                <x-select class="block mt-2 w-full" wire:model.debounce.800ms="type">
+                    <option value="0">Select a type</option>
+                    @foreach ($event_types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name }}</option>  
+                    @endforeach
+                </x-select>
+            </div>
+            <div class="col-span-12 sm:col-span-12 py-1">
+                <x-jet-label for="organization" class="font-bold" value="{{ __('Organization') }}" />
+                <x-jet-input id="organization" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="organization" placeholder="Organization" :value="old('organization')" autocomplete="organization" />
+                <x-jet-input-error for="organization" class="mt-2" />
+            </div>
+            <div class="col-span-12 sm:col-span-12 py-1">
+                <x-jet-label for="email" class="font-bold" value="{{ __('Email *') }}" />
+                <x-jet-input id="email" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="email" placeholder="your@mail.com" :value="old('email')" autocomplete="email" />
+                <x-jet-input-error for="email" class="mt-2" />
+            </div>
+            <div class="col-span-12 sm:col-span-12 py-1">
+                <x-jet-label for="phone" class="font-bold" value="{{ __('Phone') }}" />
+                <x-jet-input id="phone" class="block mt-2 w-2/4" type="tel" wire:model.debounce.800ms="phone" placeholder="+11234567890" :value="old('phone')" autocomplete="phone" />
+                <x-jet-input-error for="phone" class="mt-2" />
+            </div>
+
+            <x-button class="mt-2 bg-purple-500 hover:bg-purple-400" wire:click="create">
+                {{ __('Save') }}
+            </x-button>
         </div>
         <div class="md:col-start-8 md:col-end-11 px-6 mt-5">
             <div class="py-6">
@@ -201,6 +190,10 @@
     <script>
         $(document).ready(function() {
             $('.select-single').select2();
+            $('.select-single').on('change', function (e) {
+                var data = $('.select-single').select2("val");
+                @this.set('country', data);
+            });
         });
     </script>
     @endpush
