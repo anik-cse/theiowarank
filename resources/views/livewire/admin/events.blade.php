@@ -50,8 +50,8 @@
                 <span>{{ $name }}</span>
             </div>
             <div class="col-span-12 sm:col-span-12 md:py-2">
-                <x-jet-label for="name" class="font-bold" value="{{ __('Name *') }}" />
-                <x-jet-input id="name" class="block mt-2 w-full" type="text" wire:model="name" placeholder="Name" :value="old('name')" autocomplete="name" />
+                <x-jet-label for="event_name" class="font-bold" value="{{ __('Name *') }}" />
+                <x-jet-input id="event_name" class="block mt-2 w-full" type="text" wire:model="name" placeholder="Name" :value="old('name')" autocomplete="event_name" />
                 <x-jet-input-error for="name" class="mt-2" />
             </div>
             <div class="col-span-12 sm:col-span-12 py-4">
@@ -163,24 +163,7 @@
         </div>
         <div class="md:col-start-8 md:col-end-11 px-6 mt-5">
             <div class="py-6">
-                <x-jet-label class="font-bold py-2" value="{{ __('Races') }}" />
-                <div class="py-3 md:px-2">
-                    <p class="text-sm">Women's Final</p>
-                    <p class="text-xs font-bold">dowlhill, trail, <5k, women </p>
-                </div>
-                <div class="py-3 md:px-2">
-                    <p class="text-sm">Women's Final</p>
-                    <p class="text-xs font-bold">dowlhill, trail, <5k, women </p>
-                </div>
-                <div class="py-3 md:px-2">
-                    <p class="text-sm">Women's Final</p>
-                    <p class="text-xs font-bold">dowlhill, trail, <5k, women </p>
-                </div>
-                <div class="py-2">
-                    <button class="shadow md:col-start-1 md:col-end-1 bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white py-2 px-4" type="button">
-                        Add Race
-                    </button>
-                </div>
+                @livewire('admin.race')
             </div>
         </div>
     </div>

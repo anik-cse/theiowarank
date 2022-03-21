@@ -11,7 +11,6 @@ use Livewire\WithPagination;
 class Events extends Component
 {
     use WithPagination;
-    public $modalFormVisible = false;
     public $name, $venue, $address_one, $address_two, $city, $region, $post_code, $country, $type, $organization, $email, $phone;
     public $start_day, $start_month, $start_year;
     public $end_day, $end_month, $end_year;
@@ -93,7 +92,7 @@ class Events extends Component
         ]);
     }
 
-        /**
+    /**
      * The update function.
      *
      * @return void
@@ -108,34 +107,6 @@ class Events extends Component
             'title' => 'Record updated successfully?',
             'text' => '',
         ]);
-    }
-
-    /**
-     * Shows the form modal
-     * in update mode.
-     *
-     * @param  mixed $id
-     * @return void
-     */
-    public function updateShowModal($id)
-    {
-        $this->resetValidation();
-        $this->reset();
-        $this->modelId = $id;
-        $this->modalFormVisible = true;
-        $this->loadModel();
-    }
-
-    /**
-     * Loads the model data
-     * of this component.
-     *
-     * @return void
-     */
-    public function loadModel()
-    {
-        $data = Event::find($this->modelId);
-        $this->length = $data->length;
     }
 
     /**
@@ -164,20 +135,6 @@ class Events extends Component
     {
         $event->delete();
     }
-
-    /**
-     * Shows the form modal
-     * of the create function.
-     *
-     * @return void
-     */
-    public function createShowModal()
-    {
-        $this->resetValidation();
-        $this->reset();
-        $this->modalFormVisible = true;
-    }
-
 
     public function render()
     {
