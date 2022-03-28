@@ -30,8 +30,9 @@ Route::group(['middleware' => 'auth'],function () {
         Route::view('/events', 'admin.events')->name('events');
         Route::view('/riders', 'admin.riders')->name('riders');
         Route::view('/event-types', 'admin.event-types')->name('event-types');
-        Route::view('/race-types', 'admin.race-types')->name('race-types');
-        Route::view('/race-length', 'admin.race-length')->name('race-length');
+        Route::view('/race-types', 'admin.race.race-types')->name('race-types');
+        Route::view('/race-length', 'admin.race.race-length')->name('race-length');
+        Route::view('/race-result', 'admin.race.race-result')->name('race-result');
         Route::resource('pages', PagesController::class);
         Route::post('/ckeditor-img', [CkeditorImageController::class, 'store'])->name('ckeditor.img.upload');
     });
