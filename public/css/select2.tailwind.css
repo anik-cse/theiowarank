@@ -154,7 +154,7 @@
 .select2-search--dropdown {
   /* Search dropdown element*/
   display: block;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
 }
 
 .select2-search--dropdown .select2-search__field {

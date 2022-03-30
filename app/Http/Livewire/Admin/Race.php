@@ -156,7 +156,7 @@ class Race extends Component
         $races = Races::leftjoin('race_types', 'races.type', '=', 'race_types.id')
                     ->leftjoin('race_lengths', 'races.length', '=', 'race_lengths.id')
                     ->select('races.*', 'race_types.type_name', 'race_lengths.length as length_name')
-                    ->get();
+                    ->latest('races.created_at')->limit(10)->get();
         $types = RaceType::all();
         $lengths = RaceLength::all();
         return view('livewire.admin.race', compact('races', 'types', 'lengths'));

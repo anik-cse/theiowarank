@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Events;
 
 use Livewire\Component;
 use App\Models\Countries;
@@ -8,7 +8,7 @@ use App\Models\EventType;
 use App\Models\Events as Event;
 use Livewire\WithPagination;
 
-class Events extends Component
+class EventCreate extends Component
 {
     use WithPagination;
     public $name, $venue, $address_one, $address_two, $city, $region, $post_code, $country, $type, $organization, $email, $phone;
@@ -92,49 +92,6 @@ class Events extends Component
         ]);
     }
 
-    /**
-     * The update function.
-     *
-     * @return void
-     */
-    public function update()
-    {
-        $this->validate();
-        Event::find($this->modelId)->update($this->validate());
-        $this->reset();
-        $this->dispatchBrowserEvent('swal:modal', [
-            'type' => 'success',
-            'title' => 'Record updated successfully?',
-            'text' => '',
-        ]);
-    }
-
-    /**
-     * Delete confirmation.
-     *
-     * @param  mixed  $length
-     * @return void
-     */
-    public function deleteConfirm($id)
-    {
-        $this->dispatchBrowserEvent('swal:confirm', [
-            'type' => 'warning',
-            'title' => 'Are you sure?',
-            'text' => '',
-            'id' => $id,
-        ]);
-    }
-
-    /**
-     * Delete the given type.
-     *
-     * @param  mixed  $type
-     * @return void
-     */
-    public function delete(Event $event)
-    {
-        $event->delete();
-    }
 
     public function render()
     {
@@ -144,7 +101,7 @@ class Events extends Component
                     ->leftjoin('countries', 'events.country', '=', 'countries.id')
                     ->select('events.name', 'events.city', 'events.region', 'events.country',
                      'events.type', 'event_types.name as type', 'countries.iso')
-                    ->get();
-        return view('livewire.admin.events', compact('countries', 'event_types', 'events'));
+                     ->latest('events.created_at')->limit(10)->get();
+        return view('livewire.admin.events.event-create', compact('countries', 'event_types', 'events'));
     }
 }
