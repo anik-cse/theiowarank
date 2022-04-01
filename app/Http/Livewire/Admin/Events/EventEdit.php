@@ -4,12 +4,13 @@ namespace App\Http\Livewire\Admin\Events;
 
 use App\Models\Events;
 use App\Models\Countries;
+use App\Models\EventTier;
 use App\Models\EventType;
 use Livewire\Component;
 
 class EventEdit extends Component
 {
-    public $name, $venue, $address_one, $address_two, $city, $region, $post_code, $country, $type, $organization, $email, $phone;
+    public $name, $venue, $address_one, $address_two, $city, $region, $post_code, $country, $type, $tier, $organization, $email, $phone;
     public $start_day, $start_month, $start_year;
     public $end_day, $end_month, $end_year;
     public $start_date, $end_date;
@@ -40,6 +41,7 @@ class EventEdit extends Component
             'post_code' => 'required',
             'country' => 'required',
             'type' => 'sometimes|nullable',
+            'tier' => 'required|integer',
             'organization' => 'sometimes|nullable|max:255',
             'email' => 'required|email',
             'phone' => 'sometimes|nullable|regex:/[+]{1}[0-9]{11,14}/',
@@ -64,6 +66,7 @@ class EventEdit extends Component
         $this->post_code = $event->post_code;
         $this->country = $event->country;
         $this->type = $event->type;
+        $this->tier = $event->tier;
         $this->organization = $event->organization;
         $this->email = $event->email;
         $this->phone = $event->phone;
@@ -91,6 +94,7 @@ class EventEdit extends Component
             'post_code' =>  $this->post_code,
             'country' =>  $this->country,
             'type' =>  $this->type,
+            'tier' =>  $this->tier,
             'organization' =>  $this->organization,
             'email' =>  $this->email,
             'phone' =>  $this->phone,
@@ -107,11 +111,12 @@ class EventEdit extends Component
     {
         $countries = Countries::select('id', 'name')->get();
         $event_types = EventType::all();
+        $event_tiers = EventTier::all();
         $latest_events = Events::leftjoin('event_types', 'events.type', '=', 'event_types.id')
                 ->leftjoin('countries', 'events.country', '=', 'countries.id')
                 ->select('events.name', 'events.city', 'events.region', 'events.country',
                 'events.type', 'event_types.name as type', 'countries.iso')
                 ->latest('events.created_at')->limit(10)->get();
-        return view('livewire.admin.events.event-edit', compact('latest_events', 'countries', 'event_types'));
+        return view('livewire.admin.events.event-edit', compact('latest_events', 'countries', 'event_tiers', 'event_types'));
     }
 }

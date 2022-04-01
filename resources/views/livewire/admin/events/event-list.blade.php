@@ -30,16 +30,17 @@
                             <th class="px-4 py-3">Event name</th>
                             <th>Event location</th>
                             <th>Event type</th>
-                            <th class="px-4 py-3" style="width: 10%">Action</th>
+                            <th class="px-4 py-3" style="width: 20%">Action</th>
                         </tr>
                         </thead>
-                        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" x-cloak>
                             @foreach ($events as $event)
                             <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3 text-sm">{{ $event->name }}</td>
                                 <td class="px-4 py-3 text-sm">{{ $event->city }}, {{ $event->region }}, {{ $event->iso }}</td>
                                 <td class="px-4 py-3 text-sm">{{ $event->type }}</td>
                                 <td class="px-4 py-3 text-sm">
+                                    <a href="{{ route('admin.events.show', $event->id) }}"  class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-1 px-2 border border-purple-500 rounded">show</a>
                                     <a href="{{ route('admin.events.edit', $event->id) }}"  class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded">edit</a>
                                     <button  class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
                                 </td>

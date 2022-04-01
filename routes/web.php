@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\CkeditorImageController;
 use App\Http\Livewire\Admin\Events\EventList;
 use App\Http\Livewire\Admin\Events\EventCreate;
 use App\Http\Livewire\Admin\Events\EventEdit;
+use App\Http\Livewire\Admin\Events\EventShow;
+use App\Http\Livewire\Admin\Events\EventTier;
+use App\Http\Livewire\Admin\Events\EventType;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +38,9 @@ Route::group(['middleware' => 'auth'],function () {
         Route::get('/events', EventList::class)->name('events.list');
         Route::get('/event-create', EventCreate::class)->name('events.create');
         Route::get('/event-edit/{id}', EventEdit::class)->name('events.edit');
-        Route::view('/event-types', 'admin.events.event-types')->name('event-types');
+        Route::get('/event-show/{id}', EventShow::class)->name('events.show');
+        Route::get('/event-types', EventType::class)->name('event-types');
+        Route::get('/event-tiers', EventTier::class)->name('event-tiers');
         // Riders 
         Route::view('/riders', 'admin.riders')->name('riders');
 

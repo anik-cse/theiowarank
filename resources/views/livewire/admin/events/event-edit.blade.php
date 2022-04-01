@@ -143,6 +143,16 @@
                 </x-select>
             </div>
             <div class="col-span-12 sm:col-span-12 py-1">
+                <x-jet-label for="tier" class="font-bold" value="{{ __('Tier *') }}" />
+                <x-select class="block mt-2 w-full" wire:model.debounce.800ms="tier">
+                    <option value="0">Select a tier</option>
+                    @foreach ($event_tiers as $tier)
+                    <option value="{{ $tier->id }}">{{ $tier->name }}</option>  
+                    @endforeach
+                </x-select>
+                <x-jet-input-error for="tier" class="mt-2" />
+            </div>
+            <div class="col-span-12 sm:col-span-12 py-1">
                 <x-jet-label for="organization" class="font-bold" value="{{ __('Organization') }}" />
                 <x-jet-input id="organization" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="organization" placeholder="Organization" :value="old('organization')" autocomplete="organization" />
                 <x-jet-input-error for="organization" class="mt-2" />
@@ -169,8 +179,8 @@
         </div>
     </div>
     @push('scripts')
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="{{ mix('js/jquery.js')}}"></script>
+    <script src="{{ mix('js/select2.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.select-single').select2();

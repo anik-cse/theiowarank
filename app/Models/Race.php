@@ -17,4 +17,11 @@ class Race extends Model
         'notes',
     ];
 
+    /**
+     * Get the results associated with the races.
+     */
+    public function results()
+    {
+        return $this->hasMany(RaceResult::class, 'race')->with('racers');
+    }
 }

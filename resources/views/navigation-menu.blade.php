@@ -191,7 +191,7 @@
 
                         <div x-show="open" x-cloak @click.away="open = false" x-transition.duration.500ms>
                             <a  href="{{ route('admin.event-types') }}" class="py-2 px-14 block text-sm text-gray-100 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 hover:text-white">Event type</a>
-                            <a  href="#" class="py-2 px-14 block text-sm text-gray-100 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 hover:text-white">Event tier</a>
+                            <a  href="{{ route('admin.event-tiers') }}" class="py-2 px-14 block text-sm text-gray-100 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 hover:text-white">Event tier</a>
                         </div>
                     </div>
                     <a href="{{ route('admin.events.list') }}" class="py-2 px-3 relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Events;
 use Livewire\Component;
 use App\Models\Race as Races;
 use App\Models\RaceType;
@@ -12,7 +13,7 @@ class Race extends Component
 {
     use WithPagination;
     public $modalFormVisible = false;
-    public $name, $type, $length, $class, $notes;
+    public $name, $type, $length, $class, $event, $notes;
     public $modelId;
     protected $listeners = ['delete'];
 
@@ -28,6 +29,7 @@ class Race extends Component
             'type' => 'required',
             'length' => 'required',
             'class' => 'sometimes|nullable',
+            'event' => 'sometimes|nullable',
             'notes' => 'sometimes|nullable',
         ];
     }
@@ -108,6 +110,7 @@ class Race extends Component
         $this->type = $data->type;
         $this->length = $data->length;
         $this->class = $data->class;
+        $this->event = $data->event;
         $this->notes = $data->notes;
     }
 
@@ -159,6 +162,7 @@ class Race extends Component
                     ->latest('races.created_at')->limit(10)->get();
         $types = RaceType::all();
         $lengths = RaceLength::all();
-        return view('livewire.admin.race', compact('races', 'types', 'lengths'));
+        $events = Events::select('id', 'name')->get();
+        return view('livewire.admin.race', compact('races', 'types', 'lengths', 'events'));
     }
 }

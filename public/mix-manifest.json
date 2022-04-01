@@ -10,7 +10,7 @@
     "/js/custom.js": "/js/custom.js",
     "/js/flickity.pkgd.min.js": "/js/flickity.pkgd.min.js",
     "/js/sweetalert.min.js": "/js/sweetalert.min.js",
-    "/js/jquery.datatable.min.js": "/js/jquery.datatable.min.js",
+    "/js/select2.min.js": "/js/select2.min.js",
     "/ckeditor/CONTRIBUTING.md": "/ckeditor/CONTRIBUTING.md",
     "/ckeditor/LICENSE.md": "/ckeditor/LICENSE.md",
     "/ckeditor/package.json": "/ckeditor/package.json",

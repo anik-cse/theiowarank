@@ -52,6 +52,16 @@
                     <option value="Others">Others</option>  
                 </x-select>
             </div>
+            <div class="mt-4" wire:ignore>
+                <x-jet-label for="event" class="font-bold" value="{{ __('Event') }}" />
+                <x-select class="block mt-2 w-full" wire:model.debounce.800ms="event" id="event" style="width: 100%">
+                    <option value="0">Select event</option>
+                    @foreach ($events as $event)
+                    <option value="{{ $event->id }}">{{ $event->name }}</option>  
+                    @endforeach
+                </x-select>
+                @error('event') <span class="text-red-400">{{ $message }}</span> @enderror
+            </div>
             <div class="mt-4">
                 <x-jet-label for="race_name" value="{{ __('Notes') }}" />
                 <textarea
@@ -97,4 +107,18 @@
             @endif
         </x-slot>
     </x-jet-dialog-modal>
+
+    @push('scripts')
+    <script src="{{ mix('js/jquery.js')}}"></script>
+    <script src="{{ mix('js/select2.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#event').select2();
+            $('#event').on('change', function (e) {
+                var event = $('#event').select2("val");
+                @this.set('event', event);
+            });
+        });
+    </script>
+    @endpush
 </div>

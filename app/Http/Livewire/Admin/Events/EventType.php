@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Events;
 
 use Livewire\Component;
 use App\Models\EventType as Types;
 use Livewire\WithPagination;
 
-class EventTypes extends Component
+class EventType extends Component
 {
     use WithPagination;
     public $modalFormVisible = false;
@@ -144,6 +144,6 @@ class EventTypes extends Component
     public function render()
     {
         $types = Types::paginate(10);
-        return view('livewire.admin.event-types', compact('types'));
+        return view('livewire.admin.events.event-type', compact('types'));
     }
 }

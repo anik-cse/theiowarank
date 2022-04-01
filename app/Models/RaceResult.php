@@ -15,4 +15,12 @@ class RaceResult extends Model
         'racer',
         'place',
     ];
+
+    /**
+     * Get the riders associated with the result.
+     */
+    public function racers()
+    {
+        return $this->hasMany(Riders::class, 'id', 'racer');
+    }
 }
