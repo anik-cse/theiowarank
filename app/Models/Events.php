@@ -30,7 +30,7 @@ class Events extends Model
     /**
      * Get the type associated with the event.
      */
-    public function type()
+    public function type_info()
     {
         return $this->hasOne(EventType::class, 'id', 'type');
     }
@@ -38,7 +38,7 @@ class Events extends Model
     /**
      * Get the tire associated with the event.
      */
-    public function tier()
+    public function tier_info()
     {
         return $this->hasOne(EventTier::class, 'id', 'tier');
     }
@@ -46,7 +46,7 @@ class Events extends Model
     /**
      * Get the country associated with the event.
      */
-    public function country()
+    public function country_info()
     {
         return $this->hasOne(Countries::class, 'id','country');
     }
@@ -57,5 +57,13 @@ class Events extends Model
     public function races()
     {
         return $this->hasMany(Race::class, 'event')->with('results');
+    }
+
+    /**
+     * Get the races associated with the event.
+     */
+    public function races_with_winners()
+    {
+        return $this->hasMany(Race::class, 'event')->with('race_type', 'race_length', 'race_winner');
     }
 }

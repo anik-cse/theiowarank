@@ -18,10 +18,34 @@ class Race extends Model
     ];
 
     /**
+     * Get the type associated with the races.
+     */
+    public function race_type()
+    {
+        return $this->hasOne(RaceType::class, 'id', 'type');
+    }
+
+    /**
+     * Get the type associated with the races.
+     */
+    public function race_length()
+    {
+        return $this->hasOne(RaceLength::class, 'id', 'length');
+    }
+
+    /**
      * Get the results associated with the races.
      */
     public function results()
     {
-        return $this->hasMany(RaceResult::class, 'race')->with('racers');
+        return $this->hasMany(RaceResult::class, 'race')->with('winnerinfo')->orderBy('place', 'asc');
+    }
+
+    /**
+     * Get the winner associated with the races.
+     */
+    public function race_winner()
+    {
+        return $this->hasOne(RaceResult::class, 'race')->with('winnerinfo')->where('place', 1);
     }
 }

@@ -7,10 +7,13 @@ use Livewire\Component;
 
 class EventShow extends Component
 {
+    public $event;
+
     public function mount($id)
     {
-        $event = Events::with('type', 'tier', 'country', 'races')->where('id', $id)->first();
-        dd($event);
+        $event = Events::with('type_info', 'tier_info', 'country_info', 'races')->where('id', $id)->first();
+        // dd($event);
+        $this->event = $event;
     }
     public function render()
     {

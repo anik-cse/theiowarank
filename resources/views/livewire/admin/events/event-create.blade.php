@@ -43,7 +43,7 @@
                       </tr>  
                     @endforeach
                 </tbody>
-              </table>
+            </table>
         </div>
         <div class="md:col-start-4 md:col-end-8 md:px-6 md:border-l-4 md:border-slate-900">
             <div class="h-6 text-2xl md:text-3xl font-bold dark:text-gray-200">

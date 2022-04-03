@@ -17,10 +17,10 @@ class RaceResult extends Model
     ];
 
     /**
-     * Get the riders associated with the result.
+     * Get the winner
      */
-    public function racers()
+    public function winnerinfo()
     {
-        return $this->hasMany(Riders::class, 'id', 'racer');
+        return $this->hasOne(Riders::class, 'id', 'racer');
     }
 }
