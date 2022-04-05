@@ -10,6 +10,10 @@ use App\Http\Livewire\Admin\Events\EventEdit;
 use App\Http\Livewire\Admin\Events\EventShow;
 use App\Http\Livewire\Admin\Events\EventTier;
 use App\Http\Livewire\Admin\Events\EventType;
+use App\Http\Livewire\Admin\Riders\RiderCreate;
+use App\Http\Livewire\Admin\Riders\RiderDetails;
+use App\Http\Livewire\Admin\Riders\RiderEdit;
+use App\Http\Livewire\Admin\Riders\RiderList;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +46,10 @@ Route::group(['middleware' => 'auth'],function () {
         Route::get('/event-types', EventType::class)->name('event-types');
         Route::get('/event-tiers', EventTier::class)->name('event-tiers');
         // Riders 
-        Route::view('/riders', 'admin.riders')->name('riders');
+        Route::get('/riders', RiderList::class)->name('riders.list');
+        Route::get('/rider-create', RiderCreate::class)->name('riders.create');
+        Route::get('/rider-edit/{id}', RiderEdit::class)->name('riders.edit');
+        Route::get('/rider-details/{rider}', RiderDetails::class)->name('riders.detail');
 
         Route::view('/race-types', 'admin.race.race-types')->name('race-types');
         Route::view('/race-length', 'admin.race.race-length')->name('race-length');

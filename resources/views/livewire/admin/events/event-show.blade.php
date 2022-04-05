@@ -44,7 +44,7 @@
                     <table class="table-auto border-separate my-table-spacing w-full text-left">
                         <tbody>
                             @foreach ($event->races as $race)
-                            <tr>
+                            <tr class="pt-10">
                                 <th>Race name</th>
                                 <th class="pl-4">Race type</th>
                                 <th class="pl-4">Race length</th>

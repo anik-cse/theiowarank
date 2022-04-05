@@ -41,11 +41,11 @@ class Race extends Model
         return $this->hasMany(RaceResult::class, 'race')->with('winnerinfo')->orderBy('place', 'asc');
     }
 
-    /**
-     * Get the winner associated with the races.
-     */
-    public function race_winner()
-    {
-        return $this->hasOne(RaceResult::class, 'race')->with('winnerinfo')->where('place', 1);
-    }
+    // /**
+    //  * Get the winner associated with the races.
+    //  */
+    // public function race_winner()
+    // {
+    //     return $this->hasOne(RaceResult::class, 'race')->with('winnerinfo')->where('place', 1);
+    // }
 }

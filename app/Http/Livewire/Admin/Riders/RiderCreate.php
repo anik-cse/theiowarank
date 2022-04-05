@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Riders;
 
 use Livewire\Component;
 use App\Models\Riders as Rider;
-use Livewire\WithPagination;
 
-class Riders extends Component
+class RiderCreate extends Component
 {
-    use WithPagination;
     public $first_name, $last_name, $home_region, $class, $team, $email, $phone;
     public $birth_date, $birth_month, $birth_year;
 
@@ -69,7 +67,7 @@ class Riders extends Component
 
     public function render()
     {
-        $riders = Rider::select('first_name', 'last_name', 'home_region', 'class')->get();
-        return view('livewire.admin.riders', compact('riders'));
+        $riders = Rider::select('first_name', 'last_name', 'home_region', 'class')->latest('created_at')->limit(10)->get();
+        return view('livewire.admin.riders.rider-create', compact('riders'));
     }
 }
