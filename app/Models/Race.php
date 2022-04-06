@@ -14,6 +14,7 @@ class Race extends Model
         'type',
         'length',
         'class',
+        'event',
         'notes',
     ];
 
