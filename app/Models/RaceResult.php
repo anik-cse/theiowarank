@@ -10,7 +10,6 @@ class RaceResult extends Model
     use HasFactory;
 
     protected $fillable = [
-        'event',
         'race',
         'racer',
         'place',

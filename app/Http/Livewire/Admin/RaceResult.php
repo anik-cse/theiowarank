@@ -13,7 +13,7 @@ class RaceResult extends Component
 {
     use WithPagination;
     public $modalFormVisible = false;
-    public $race, $event, $racer, $place;
+    public $race, $racer, $place;
     public $modelId;
 
     protected $listeners = ['delete'];
@@ -26,7 +26,6 @@ class RaceResult extends Component
     {
         return [
             'race' => 'required',
-            'event' => 'required',
             'racer' => 'required',
             'place' => 'required',
         ];
