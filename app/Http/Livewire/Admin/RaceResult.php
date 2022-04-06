@@ -158,7 +158,7 @@ class RaceResult extends Component
         $results = Result::leftjoin('races', 'race_results.race', '=', 'races.id')
                     ->leftjoin('race_types', 'races.type', '=','race_types.id')
                     ->leftjoin('race_lengths', 'races.length', '=','race_lengths.id')
-                    ->leftjoin('events', 'race_results.event', '=','events.id')
+                    ->leftjoin('events', 'races.event', '=','events.id')
                     ->leftjoin('riders', 'race_results.racer', '=','riders.id')
                     ->select('race_results.id', 'race_results.place','races.name as race_name', 'races.class as race_class', 'events.name as event_name',
                             'events.start_date as event_date','race_types.type_name as race_type_name', 'race_lengths.length as race_length',
