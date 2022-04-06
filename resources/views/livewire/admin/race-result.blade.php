@@ -75,7 +75,7 @@
             </x-select>
             @error('race') <span class="text-red-400">{{ $message }}</span> @enderror
         </div>
-        <div class="mt-4" wire:ignore>
+        {{-- <div class="mt-4" wire:ignore>
             <x-jet-label for="event" class="font-bold" value="{{ __('Event *') }}" />
             <x-select class="block mt-2 w-full" wire:model.debounce.800ms="event" id="event" style="width: 100%">
                 <option value="0">Select event</option>
@@ -84,7 +84,7 @@
                 @endforeach
             </x-select>
             @error('event') <span class="text-red-400">{{ $message }}</span> @enderror
-        </div>
+        </div> --}}
         <div class="mt-4" wire:ignore>
             <x-jet-label for="racer" class="font-bold" value="{{ __('Racer *') }}" />
             <x-select class="block mt-2 w-full" wire:model.debounce.800ms="racer" id="racer" style="width: 100%">
