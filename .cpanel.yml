@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/themzjgb/public_html/
+    - export DEPLOYPATH=/home/themzjgb/theiowa.themadcoders.com/
     - /bin/cp -r * $DEPLOYPATH #copy all from root
 #    - /bin/cp -r ./public/* $DEPLOYPATH/public_html/
     - /bin/cp ./public/js/*.js $DEPLOYPATH/..../js
