@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UserRoleSeeder::class,
             TeamSeeder::class,
             CountriesTableSeeder::class,
+            AnimationTableSeeder::class,
         ]);
     }
 }
