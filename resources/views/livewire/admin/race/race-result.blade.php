@@ -75,12 +75,22 @@
             </x-select>
             @error('race') <span class="text-red-400">{{ $message }}</span> @enderror
         </div>
-        {{-- <div class="mt-4" wire:ignore>
-            <x-jet-label for="event" class="font-bold" value="{{ __('Event *') }}" />
-            <x-select class="block mt-2 w-full" wire:model.debounce.800ms="event" id="event" style="width: 100%">
-                <option value="0">Select event</option>
-                @foreach ($events as $event)
-                <option value="{{ $event->id }}">{{ $event->name }}</option>  
+        <div class="mt-4" wire:ignore>
+            <x-jet-label for="racer" class="font-bold" value="{{ __('Racer *') }}" />
+            <x-select class="block mt-2 w-full" wire:model.debounce.800ms="racer" id="racer" style="width: 100%">
+                <option value="0">Select racer</option>
+                @foreach ($racers as $racer)
+                <option value="{{ $racer->id }}">{{ $racer->first_name }} {{ $racer->last_name }}</option>  
+                @endforeach
+            </x-select>
+            @error('racer') <span class="text-red-400">{{ $message }}</span> @enderror
+        </div>
+        <div class="mt-4">
+            <x-jet-label for="place" value="{{ __('Place *') }}" />
+            <x-jet-input id="place" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="place" />
+            @error('place') <span class="text-red-400">{{ $message }}</span> @enderror
+        </div>
+    </x-slot>
     <x-slot name="footer">
         <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
             {{ __('Nevermind') }}

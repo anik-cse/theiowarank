@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Riders;
 
+use App\Models\RiderClass;
 use App\Models\Riders;
 use Livewire\Component;
 
@@ -29,6 +30,7 @@ class RiderEdit extends Component
     public function render()
     {
         $riders = Riders::select('first_name', 'last_name', 'home_region', 'class')->latest('created_at')->limit(10)->get();
-        return view('livewire.admin.riders.rider-edit', compact('riders'));
+        $class = RiderClass::select('class_name')->get();
+        return view('livewire.admin.riders.rider-edit', compact('riders', 'classes'));
     }
 }

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Race;
 
 use Livewire\Component;
-use App\Models\RaceType as Types;
+use App\Models\RaceLength as Length;
 use Livewire\WithPagination;
 
-class RaceType extends Component
+class RaceLength extends Component
 {
     use WithPagination;
     public $modalFormVisible = false;
-    public $type_name;
+    public $length;
     public $modelId;
 
     protected $listeners = ['delete'];
@@ -22,7 +22,7 @@ class RaceType extends Component
     public function rules()
     {
         return [
-            'type_name' => 'required',
+            'length' => 'required',
         ];
     }
 
@@ -45,7 +45,7 @@ class RaceType extends Component
     public function create()
     {
         $this->validate();
-        Types::create($this->validate());
+        Length::create($this->validate());
         $this->modalFormVisible = false;
         $this->reset();
         $this->dispatchBrowserEvent('swal:modal', [
@@ -63,7 +63,7 @@ class RaceType extends Component
     public function update()
     {
         $this->validate();
-        Types::find($this->modelId)->update($this->validate());
+        Length::find($this->modelId)->update($this->validate());
         $this->modalFormVisible = false;
         $this->reset();
         $this->dispatchBrowserEvent('swal:modal', [
@@ -97,14 +97,14 @@ class RaceType extends Component
      */
     public function loadModel()
     {
-        $data = Types::find($this->modelId);
-        $this->type_name = $data->type_name;
+        $data = Length::find($this->modelId);
+        $this->length = $data->length;
     }
 
     /**
      * Delete confirmation.
      *
-     * @param  mixed  $types
+     * @param  mixed  $length
      * @return void
      */
     public function deleteConfirm($id)
@@ -123,9 +123,9 @@ class RaceType extends Component
      * @param  mixed  $type
      * @return void
      */
-    public function delete(Types $types)
+    public function delete(Length $length)
     {
-        $types->delete();
+        $length->delete();
     }
 
     /**
@@ -143,7 +143,7 @@ class RaceType extends Component
 
     public function render()
     {
-        $types = Types::paginate(10);
-        return view('livewire.admin.race-type', compact('types'));
+        $lengths = Length::paginate(10);
+        return view('livewire.admin.race.race-length', compact('lengths'));
     }
 }

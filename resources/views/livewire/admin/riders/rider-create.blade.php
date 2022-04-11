@@ -4,7 +4,7 @@
         <h2 class="text-3xl font-bold dark:text-gray-200">riders</h2>
     </div>
     <div class="grid md:grid-cols-8 h-14 py-3 gap-4">
-        <button class="shadow md:col-start-1 md:col-end-1 bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white py-2 px-4" type="button">
+        <button class="shadow md:col-start-1 md:col-end-1 bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white" type="button">
             Add New
         </button>
         <div class="md:col-start-2 md:col-end-5 bg-white rounded flex items-center w-full mr-4 p-0 shadow-sm border border-gray-200">
@@ -62,9 +62,9 @@
                 <x-jet-label for="class" class="font-bold" value="{{ __('Class') }}" />
                 <x-select class="block mt-2 w-full" wire:model.debounce.800ms="class">
                     <option value="">Select a class</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Others">Others</option>
+                    @foreach ($classes as $class)
+                    <option value="{{ $class->class_name }}">{{ $class->class_name }}</option>
+                    @endforeach
                 </x-select>
             </div>
             <div class="col-span-12 sm:col-span-12 md:py-2">

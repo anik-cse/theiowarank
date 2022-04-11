@@ -12,10 +12,15 @@ use App\Http\Livewire\Admin\Events\EventEdit;
 use App\Http\Livewire\Admin\Events\EventShow;
 use App\Http\Livewire\Admin\Events\EventTier;
 use App\Http\Livewire\Admin\Events\EventType;
+use App\Http\Livewire\Admin\Race\RaceLength;
+use App\Http\Livewire\Admin\Race\RaceList;
+use App\Http\Livewire\Admin\Race\RaceResult;
+use App\Http\Livewire\Admin\Race\RaceType;
 use App\Http\Livewire\Admin\Riders\RiderCreate;
 use App\Http\Livewire\Admin\Riders\RiderDetails;
 use App\Http\Livewire\Admin\Riders\RiderEdit;
 use App\Http\Livewire\Admin\Riders\RiderList;
+use App\Http\Livewire\Admin\Riders\Settings\RiderClass;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,17 +51,20 @@ Route::group(['middleware' => 'auth'],function () {
         Route::get('/event-create', EventCreate::class)->name('events.create');
         Route::get('/event-edit/{id}', EventEdit::class)->name('events.edit');
         Route::get('/event-show/{id}', EventShow::class)->name('events.show');
-        Route::get('/event-types', EventType::class)->name('event-types');
-        Route::get('/event-tiers', EventTier::class)->name('event-tiers');
+        Route::get('/event-types', EventType::class)->name('event.types');
+        Route::get('/event-tiers', EventTier::class)->name('event.tiers');
         // Riders 
         Route::get('/riders', RiderList::class)->name('riders.list');
         Route::get('/rider-create', RiderCreate::class)->name('riders.create');
         Route::get('/rider-edit/{id}', RiderEdit::class)->name('riders.edit');
         Route::get('/rider-details/{rider}', RiderDetails::class)->name('riders.detail');
+        Route::get('/riders/settings/rider-class', RiderClass::class)->name('riders.settings.class');
+        // Race 
+        Route::get('/race-types', RaceType::class)->name('race.types');
+        Route::get('/race-length', RaceLength::class)->name('race.length');
+        Route::get('/race-result', RaceResult::class)->name('race.result');
+        Route::get('/race-list', RaceList::class)->name('race.list');
 
-        Route::view('/race-types', 'admin.race.race-types')->name('race-types');
-        Route::view('/race-length', 'admin.race.race-length')->name('race-length');
-        Route::view('/race-result', 'admin.race.race-result')->name('race-result');
         Route::resource('pages', PagesController::class);
         Route::resource('slider', SliderController::class);
         Route::post('/ckeditor-img', [CkeditorImageController::class, 'store'])->name('ckeditor.img.upload');

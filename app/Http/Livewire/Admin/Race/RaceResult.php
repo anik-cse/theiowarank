@@ -1,16 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Race;
 
+use App\Models\Events;
+use App\Models\Race;
 use Livewire\Component;
-use App\Models\RaceLength as Length;
+use App\Models\RaceResult as Result;
+use App\Models\Riders;
 use Livewire\WithPagination;
 
-class RaceLength extends Component
+class RaceResult extends Component
 {
     use WithPagination;
     public $modalFormVisible = false;
-    public $length;
+    public $race, $racer, $place;
     public $modelId;
 
     protected $listeners = ['delete'];
@@ -22,7 +25,9 @@ class RaceLength extends Component
     public function rules()
     {
         return [
-            'length' => 'required',
+            'race' => 'required',
+            'racer' => 'required',
+            'place' => 'required',
         ];
     }
 
@@ -45,7 +50,7 @@ class RaceLength extends Component
     public function create()
     {
         $this->validate();
-        Length::create($this->validate());
+        Result::create($this->validate());
         $this->modalFormVisible = false;
         $this->reset();
         $this->dispatchBrowserEvent('swal:modal', [
@@ -55,7 +60,7 @@ class RaceLength extends Component
         ]);
     }
 
-        /**
+    /**
      * The update function.
      *
      * @return void
@@ -63,7 +68,7 @@ class RaceLength extends Component
     public function update()
     {
         $this->validate();
-        Length::find($this->modelId)->update($this->validate());
+        Result::find($this->modelId)->update($this->validate());
         $this->modalFormVisible = false;
         $this->reset();
         $this->dispatchBrowserEvent('swal:modal', [
@@ -97,8 +102,11 @@ class RaceLength extends Component
      */
     public function loadModel()
     {
-        $data = Length::find($this->modelId);
-        $this->length = $data->length;
+        $data = Result::find($this->modelId);
+        $this->race = $data->race;
+        $this->event = $data->event;
+        $this->racer = $data->racer;
+        $this->place = $data->place;
     }
 
     /**
@@ -123,9 +131,9 @@ class RaceLength extends Component
      * @param  mixed  $type
      * @return void
      */
-    public function delete(Length $length)
+    public function delete(Result $result)
     {
-        $length->delete();
+        $result->delete();
     }
 
     /**
@@ -143,7 +151,19 @@ class RaceLength extends Component
 
     public function render()
     {
-        $lengths = Length::paginate(10);
-        return view('livewire.admin.race-length', compact('lengths'));
+        $races = Race::select('id', 'name')->get();
+        $events = Events::select('id', 'name')->get();
+        $racers = Riders::select('id', 'first_name', 'last_name')->get();
+        $results = Result::leftjoin('races', 'race_results.race', '=', 'races.id')
+                    ->leftjoin('race_types', 'races.type', '=','race_types.id')
+                    ->leftjoin('race_lengths', 'races.length', '=','race_lengths.id')
+                    ->leftjoin('events', 'races.event', '=','events.id')
+                    ->leftjoin('riders', 'race_results.racer', '=','riders.id')
+                    ->select('race_results.id', 'race_results.place','races.name as race_name', 'races.class as race_class', 'events.name as event_name',
+                            'events.start_date as event_date','race_types.type_name as race_type_name', 'race_lengths.length as race_length',
+                            'riders.first_name as rider_first_name', 'riders.last_name as rider_last_name', 'riders.class as racer_class')
+                    ->get();
+        // dd($results);
+        return view('livewire.admin.race.race-result', compact('races', 'events', 'racers', 'results'));
     }
 }
