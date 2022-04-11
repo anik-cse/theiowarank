@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Riders;
+namespace App\Http\Livewire\Guest;
 
 use App\Models\Riders;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class RiderList extends Component
+class RidersTable extends Component
 {
     public $search, $view, $sortby, $orderby;
     use WithPagination;
@@ -16,34 +16,7 @@ class RiderList extends Component
         $this->sortby = $sortby;
         $this->orderby = $orderby;
     }
-
-        /**
-     * Delete confirmation.
-     *
-     * @param  mixed  $length
-     * @return void
-     */
-    public function deleteConfirm($id)
-    {
-        $this->dispatchBrowserEvent('swal:confirm', [
-            'type' => 'warning',
-            'title' => 'Are you sure?',
-            'text' => '',
-            'id' => $id,
-        ]);
-    }
-
-    /**
-     * Delete the given type.
-     *
-     * @param  mixed  $type
-     * @return void
-     */
-    public function delete(Riders $riders)
-    {
-        $riders->delete();
-    }
-
+    
     public function render()
     {
         $paginate = $this->view == ''? 5 : $this->view;
@@ -57,6 +30,6 @@ class RiderList extends Component
                         ->orWhere('class', 'LIKE', '%' . $this->search . '%')
                         ->orderBy($sortby, $orderby)
                         ->paginate($paginate);
-        return view('livewire.admin.riders.rider-list', compact('riders'));
+        return view('livewire.guest.riders-table', compact('riders'));
     }
 }
