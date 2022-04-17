@@ -45,7 +45,7 @@ class RaceList extends Component
         $races = Race::leftjoin('events', 'races.event', '=', 'events.id')
                     ->leftjoin('race_types', 'races.type', '=', 'race_types.id')
                     ->leftjoin('race_lengths', 'races.length', '=', 'race_lengths.id')
-                    ->select('races.name as name', 'races.calss as class', 'events.name as event', 'race_types.type_name as type', 'race_lengths.length as length')
+                    ->select('races.name as name', 'races.class as class', 'events.name as event', 'race_types.type_name as type', 'race_lengths.length as length')
                     ->latest('races.created_at')
                     ->where('races.name', 'LIKE', '%' . $this->search . '%')
                     ->orWhere('events.name', 'LIKE', '%' . $this->search . '%')
