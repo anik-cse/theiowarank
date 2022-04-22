@@ -174,7 +174,7 @@
         </div>
         <div class="md:col-start-8 md:col-end-11 px-6 mt-5">
             <div class="py-6">
-                @livewire('admin.race')
+                @livewire('admin.race.race')
             </div>
         </div>
     </div>

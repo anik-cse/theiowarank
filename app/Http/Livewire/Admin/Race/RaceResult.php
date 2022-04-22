@@ -13,8 +13,11 @@ class RaceResult extends Component
 {
     use WithPagination;
     public $modalFormVisible = false;
-    public $race, $racer, $place;
+    public $event, $race, $racer, $place;
     public $modelId;
+    public $event_name, $search_event;
+    public $race_name, $search_race;
+    public $full_name, $search_rider;
 
     protected $listeners = ['delete'];
      /**
@@ -107,6 +110,13 @@ class RaceResult extends Component
         $this->event = $data->event;
         $this->racer = $data->racer;
         $this->place = $data->place;
+
+        $race = Race::find($data->race);
+        $this->race_name = $race->name;
+        $event = Events::find($race->event);
+        $this->event_name = $event->name;
+        $rider = Riders::find($data->racer);
+        $this->full_name = $rider->first_name.' '.$rider->last_name;
     }
 
     /**
@@ -151,19 +161,20 @@ class RaceResult extends Component
 
     public function render()
     {
-        $races = Race::select('id', 'name')->get();
-        $events = Events::select('id', 'name')->get();
-        $racers = Riders::select('id', 'first_name', 'last_name')->get();
+        $events = Events::select('id', 'name')->where('name', 'LIKE', '%' . $this->search_event . '%')->get();
+        $races = Race::select('id', 'name')->where('event', $this->event)
+                            ->where('name', 'LIKE', '%' . $this->search_race . '%')->get();
+        $racers = Riders::select('id', 'first_name', 'last_name')->whereRaw("concat(first_name, ' ', last_name) like '%" .$this->search_rider. "%' ")->get();
         $results = Result::leftjoin('races', 'race_results.race', '=', 'races.id')
                     ->leftjoin('race_types', 'races.type', '=','race_types.id')
                     ->leftjoin('race_lengths', 'races.length', '=','race_lengths.id')
                     ->leftjoin('events', 'races.event', '=','events.id')
+                    ->leftjoin('event_tiers', 'events.tier', '=','event_tiers.id')
                     ->leftjoin('riders', 'race_results.racer', '=','riders.id')
                     ->select('race_results.id', 'race_results.place','races.name as race_name', 'races.class as race_class', 'events.name as event_name',
-                            'events.start_date as event_date','race_types.type_name as race_type_name', 'race_lengths.length as race_length',
+                            'events.start_date as event_date','event_tiers.name as event_tier','race_types.type_name as race_type_name', 'race_lengths.length as race_length',
                             'riders.first_name as rider_first_name', 'riders.last_name as rider_last_name', 'riders.class as racer_class')
                     ->get();
-        // dd($results);
         return view('livewire.admin.race.race-result', compact('races', 'events', 'racers', 'results'));
     }
 }
