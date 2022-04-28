@@ -91,7 +91,7 @@
                                 <td class="py-3 px-4">
                                     <a href="{{ route('admin.riders.detail', $rider->id) }}"  class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-1 px-2 border border-purple-500 rounded">show</a>
                                     <a href="{{ route('admin.riders.edit', $rider->id) }}"  class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded">edit</a>
-                                    <button  class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
+                                    <button wire:click="deleteConfirm({{ $rider->id }})"  class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
                                 </td>
                             </tr>
                             @empty

@@ -49,7 +49,7 @@
                                 <td class="px-4 py-3 text-sm">{{ $race->event }}</td>
                                 <td class="px-4 py-3 text-sm">
                                     <button wire:click="updateShowModal({{ $race->id }})" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded">edit</button>
-                                    <button  class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
+                                    <button wire:click="deleteConfirm({{ $race->id }})"  class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
                                 </td>
                             </tr>
                             @endforeach

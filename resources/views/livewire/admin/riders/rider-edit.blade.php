@@ -105,7 +105,7 @@
                 </div>
             </div>
 
-            <x-button class="mt-2 bg-purple-500 hover:bg-purple-400" wire:click="create">
+            <x-button class="mt-2 bg-purple-500 hover:bg-purple-400" wire:click="update({{ $this->rider_id }})">
                 {{ __('Save') }}
             </x-button>
         </div>

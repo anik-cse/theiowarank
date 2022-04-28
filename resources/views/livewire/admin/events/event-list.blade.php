@@ -42,7 +42,7 @@
                                 <td class="px-4 py-3 text-sm">
                                     <a href="{{ route('admin.events.show', $event->id) }}"  class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-1 px-2 border border-purple-500 rounded">show</a>
                                     <a href="{{ route('admin.events.edit', $event->id) }}"  class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded">edit</a>
-                                    <button  class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
+                                    <button wire:click="deleteConfirm({{ $event->id }})"  class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded">Delete</button>
                                 </td>
                             </tr>
                             @endforeach
