@@ -19,5 +19,12 @@
     "/ckeditor/CONTRIBUTING.md": "/ckeditor/CONTRIBUTING.md",
     "/ckeditor/LICENSE.md": "/ckeditor/LICENSE.md",
     "/ckeditor/package.json": "/ckeditor/package.json",
-    "/ckeditor/README.md": "/ckeditor/README.md"
+    "/ckeditor/README.md": "/ckeditor/README.md",
+    "/css/frontend/css/font-awesome.min.css": "/css/frontend/css/font-awesome.min.css",
+    "/css/frontend/css/style.css": "/css/frontend/css/style.css",
+    "/css/frontend/css/bootstrap.css": "/css/frontend/css/bootstrap.css",
+    "/css/frontend/css/mob.css": "/css/frontend/css/mob.css",
+    "/js/frontend/js/jquery.min.js": "/js/frontend/js/jquery.min.js",
+    "/js/frontend/js/bootstrap.js": "/js/frontend/js/bootstrap.js",
+    "/js/frontend/js/custom.js": "/js/frontend/js/custom.js"
 }

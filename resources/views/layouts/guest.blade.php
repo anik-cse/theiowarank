@@ -5,18 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel Jetstream CMS') }}</title>
+        <title>@yield('title')</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700%7CMontserrat:300,500%7COswald:400,500" rel="stylesheet">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-        <link rel="stylesheet" href="{{ mix('css/flickity.min.css') }}">
-        <link rel="stylesheet" href="{{ mix('css/custom.css') }}">
-        @yield('css')
+        <link rel="stylesheet" href="{{ mix('css/frontend/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/frontend/css/style.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/frontend/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/frontend/css/mob.css') }}">
+        {{-- @yield('css') --}}
     </head>
     <body>
+        <!-- Preloader -->
+        <div id="preloader">
+            <div id="status">&nbsp;</div>
+        </div>
+
+        <x-side-bar />
+
         <x-header />
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
@@ -26,38 +34,8 @@
 
     <!-- Scripts -->
     @livewireScripts
-    <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="{{ mix('js/flickity.pkgd.min.js') }}"></script>
-    <script>
-        function carousel() {
-            return {
-                active: 0,
-                init() {
-                var flkty = new Flickity(this.$refs.carousel, {
-                    freeScroll: true,
-                    wrapAround: true,
-                    pageDots: false
-                });
-                flkty.on('change', i => this.active = i);
-                }
-            }
-        }
-
-        function carouselFilter() {
-            return {
-                active: 0,
-                changeActive(i) {
-                this.active = i;
-                
-                this.$nextTick(() => {
-                    let flkty = Flickity.data( this.$el.querySelectorAll('.carousel')[i] );
-                    flkty.resize();
-                });
-                }
-            }
-        }
-    </script>
-    <script src="{{ mix('js/jquery.js') }}"></script>
-    <script src="{{ mix('js/custom.js') }}"></script>
-    @stack('scripts')
+    <script src="{{ mix('js/frontend/js/jquery.min.js') }}"></script>
+    <script src="{{ mix('js/frontend/js/bootstrap.js') }}"></script>
+    <script src="{{ mix('js/frontend/js/custom.js') }}"></script>
+    {{-- @stack('scripts') --}}
 </html>

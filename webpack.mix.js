@@ -37,3 +37,12 @@ mix.copy('resources/js/select2.min.js', 'public/js/select2.min.js');
 mix.copy('resources/js/swiper.js', 'public/js/swiper.js');
 mix.copy('resources/js/slider.js', 'public/js/slider.js');
 mix.copy('resources/ckeditor', 'public/ckeditor');
+
+// frontend
+mix.copy('resources/css/frontend/css/font-awesome.min.css', 'public/css/frontend/css/font-awesome.min.css');
+mix.copy('resources/css/frontend/css/style.css', 'public/css/frontend/css/style.css');
+mix.copy('resources/css/frontend/css/bootstrap.css', 'public/css/frontend/css/bootstrap.css');
+mix.copy('resources/css/frontend/css/mob.css', 'public/css/frontend/css/mob.css');
+mix.copy('resources/js/frontend/js/jquery.min.js', 'public/js/frontend/js/jquery.min.js');
+mix.copy('resources/js/frontend/js/bootstrap.js', 'public/js/frontend/js/bootstrap.js');
+mix.copy('resources/js/frontend/js/custom.js', 'public/js/frontend/js/custom.js');
