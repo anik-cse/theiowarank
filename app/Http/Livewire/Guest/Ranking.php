@@ -18,9 +18,9 @@ class Ranking extends Component
     {
         $races = Race::with('events')->get();
         if ($this->race_id) {
-            $race_results = Race::with('results')->where('id', $this->race_id)->first(); 
+            $race_results = Race::with('results', 'events')->where('id', $this->race_id)->first(); 
         }else{
-            $race_results = Race::with('results')->where('id', $races->last()->id)->first();
+            $race_results = Race::with('results', 'events')->where('id', $races->last()->id)->first();
         }
         // dd($race_results);
         return view('livewire.guest.ranking', compact('races', 'race_results'));
