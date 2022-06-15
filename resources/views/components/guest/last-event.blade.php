@@ -15,8 +15,8 @@
                             <span class="hom-tick-21">{{ $last_event->name }}</span>
                         </div>
                     </div>
-                    
-                    <a href="soccer.html" class="hvr-sweep-to-right">Ticket Booking</a>
+                                       
+                    <a href="soccer.html" class="hvr-sweep-to-right">View Ranks</a>
                 </div>
             </div>
         </div>
