@@ -42,6 +42,10 @@ class Race extends Model
         return $this->hasMany(RaceResult::class, 'race')->with('winnerinfo')->orderBy('place', 'asc');
     }
 
+    public function events()
+    {
+        return $this->hasOne(Events::class, 'id', 'event');
+    }
     // /**
     //  * Get the winner associated with the races.
     //  */
