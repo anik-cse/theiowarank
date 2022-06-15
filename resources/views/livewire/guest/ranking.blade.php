@@ -37,8 +37,8 @@
             <div class="col-md-6 eve-res">
                 <div class="events ev-po-2 ev-po-com">
                     <div class="ev-po-title ev-po-title-1">
-                        <h3>{{ $race_results->name }}</h3>
-                        <p>Top ten {{ $race_results->name }} {{ date('Y', strtotime($race_results->events->end_date)) }}</p>
+                        <h3>{{ $race_results->name }} {{ date('Y', strtotime($race_results->events->end_date)) }}</h3>
+                        <p>Top 10 {{ $race_results->name }}</p>
                     </div>
                     <table class="myTable">
                         <tbody>
