@@ -24,18 +24,10 @@
     <!-- FOOTER: COPY RIGHTS -->
     <div class="fcopy">
         <div class="lp copy-ri row">
-            <div class="col-md-6 col-sm-12 col-xs-12">Copyright © 2017 Sports Club. All Rights Reserved.</div>
+            <div class="col-md-6 col-sm-12 col-xs-12">Copyright © 2022 </div>
             <div class="col-md-6 foot-privacy">
                 <ul>
-                    <li><a href="#">Privacy</a>
-                    </li>
-                    <li><a href="#">Terms of use</a>
-                    </li>
-                    <li><a href="#">Security</a>
-                    </li>
-                    <li><a href="#">Policy</a>
-                    </li>
-                    <li><a href="join-club.html">Make Sponsors</a>
+                    <li><a href="">International One Wheel Association</a>
                     </li>
                 </ul>
             </div>
