@@ -12,7 +12,7 @@
         </div>
     </section>  
     <!--SECTION: UPCOMING SPORTS EVENTS-->
-    <x-guest.latest-event />
+    {{-- <x-guest.latest-event /> --}}
     <!--SECTION: CHAMPIONS LEAGUE-->
     <x-guest.last-event />
     <!--SECTION: EVENTS AND POINTS-->

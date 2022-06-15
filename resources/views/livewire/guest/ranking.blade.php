@@ -8,6 +8,18 @@
                         <p>International One Wheel Association</p>
                     </div>
                     <table class="myTable">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                              Events
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                @foreach($events as $event)
+                                <li><a wire:click="getRace({{ $event->id }})" style="cursor: pointer;">{{ $event->name}}</a></li>
+                                @endforeach
+                                {{-- <li role="separator" class="divider"></li> --}}
+                            </ul>
+                          </div>
                         <tbody>
                             {{-- <tr>
                                 <th>#</th>
@@ -55,7 +67,8 @@
                                 <td>{{$key+1}}</td>
                                 <td><img src="images/coun/19.png" alt="">
                                     <div class="h-tm-ra">
-                                        <h4>{{ $result->winnerinfo->first_name }} {{ $result->winnerinfo->last_name }}</h4><span>Eric Bros School</span>
+                                        <h4>{{ $result->winnerinfo->first_name }} {{ $result->winnerinfo->last_name }}</h4>
+                                        <span>{{ $result->winnerinfo->home_region }}, {{ $result->winnerinfo->class }}</span>
                                     </div>
                                 </td>
                             </tr>
