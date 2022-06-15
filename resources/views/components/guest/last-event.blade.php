@@ -12,7 +12,7 @@
                             <h3>{{ date('d M Y', strtotime($last_event->end_date)) }}</h3>
                         </div>
                         <div class="hom-tick-2">
-                            <span class="hom-tick-21">{{ $last_event->races->last()->notes }}</span>
+                            <span class="hom-tick-21">{{ $last_event->name }}</span>
                         </div>
                     </div>
                     
