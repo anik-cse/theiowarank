@@ -1,25 +1,19 @@
 <section class="ev-po">
-    <div class="lp">
+    <div class="lp" style="min-height: 80rem;" id="race_div">
         <div class="row">
             <div class="col-md-6 eve-res">
                 <div class="events ev-po-1 ev-po-com">
-                    <div class="ev-po-title">
+                    <div class="ev-po-title" style="background: url(../images/trends/6.jpg) no-repeat #000; background-size:cover;">
                         <h3>Latest OneWheel Races</h3>
                         <p>International One Wheel Association</p>
                     </div>
                     <table class="myTable">
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                              Events
-                              <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                @foreach($events as $event)
-                                <li><a wire:click="getRace({{ $event->id }})" style="cursor: pointer;">{{ $event->name}}</a></li>
-                                @endforeach
-                                {{-- <li role="separator" class="divider"></li> --}}
-                            </ul>
-                          </div>
+                        <select class="form-control" wire:model.debounce.800ms="event_id" style="color: black;">
+                            <option value="0">Select Event:</option>
+                            @foreach($events as $event)
+                            <option value="{{ $event->id }}">{{ $event->name}}</option>
+                            @endforeach
+                        </select>
                         <tbody>
                             {{-- <tr>
                                 <th>#</th>
@@ -48,7 +42,7 @@
 
             <div class="col-md-6 eve-res">
                 <div class="events ev-po-2 ev-po-com">
-                    <div class="ev-po-title ev-po-title-1">
+                    <div class="ev-po-title ev-po-title-1" style="    background: url(../images/trends/10.jpg) no-repeat #000; background-size:cover;">
                         <h3>{{ $race_results->name }} {{ date('Y', strtotime($race_results->events->end_date)) }}</h3>
                         <p>Top 10 {{ $race_results->name }}</p>
                     </div>

@@ -2,6 +2,9 @@
 
 namespace App\View\Components;
 
+use App\Models\Events;
+use App\Models\Race;
+use App\Models\Riders;
 use Illuminate\View\Component;
 
 class Footer extends Component
@@ -23,6 +26,9 @@ class Footer extends Component
      */
     public function render()
     {
-        return view('components.footer');
+        $players = Riders::count();
+        $events = Events::count();
+        $races = Race::count();
+        return view('components.footer', compact('players', 'events', 'races'));
     }
 }

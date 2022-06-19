@@ -18,4 +18,28 @@
     <!--SECTION: EVENTS AND POINTS-->
     @livewire('guest.ranking')
 
+    @push('scripts')
+        <script>
+            $("#scrol_to_race").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#race_div").offset().top
+                }, 2000);
+            });
+            $("#sideBarEvent").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#race_div").offset().top
+                }, 2000);
+            });
+            $("#sideBarRanking").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#race_div").offset().top
+                }, 2000);
+            });
+            $("#viewRank").click(function() {
+                $('html, body').animate({
+                    scrollTop: $("#race_div").offset().top
+                }, 2000);
+            });
+        </script>
+    @endpush
 </x-guest-layout>

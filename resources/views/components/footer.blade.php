@@ -8,9 +8,9 @@
                     <a href="#"><img src="images/logo.png" alt="">
                     </a>
                     <ul>
-                        <li><span>10,231,124</span> Community Members</li>
-                        <li><span>512</span> Sports Events</li>
-                        <li><span>2124</span> Sports Games</li>
+                        <li><span>{{ $players }}</span> Players</li>
+                        <li><span>{{ $events }}</span> Events</li>
+                        <li><span>{{ $races }}</span> Races</li>
                     </ul>
                 </div>
             </div>

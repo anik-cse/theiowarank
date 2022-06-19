@@ -5,9 +5,9 @@
     <p>Lorem ipsum dolor sit amet, cons ecte tuer adipiscing elit, sed diam non ummy nibh euismod tinc idunt ut laoreet dolore magna ali quam erat volutpat.</p>
     <ul>
         @foreach($events as $key => $event)
-        <li><a href="soccer.html"><span>{{ $key+1 }}</span>{{ $event->name }}</a>
+        <li><a><span>{{ $key+1 }}</span>{{ $event->name }}</a>
         </li>
         @endforeach
     </ul>
-    <a href="all-sports.html" class="aebtn">View All Events</a>
+    <a class="aebtn" id="scrol_to_race">View All Events</a>
 </div>

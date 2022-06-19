@@ -26,7 +26,7 @@ class RiderCreate extends Component
             'home_region' => 'required|max:255',
             'class' => 'sometimes|nullable|max:255',
             'team' => 'sometimes|nullable',
-            'email' => 'required|email',
+            'email' => 'nullable|email',
             'phone' => 'sometimes|nullable|regex:/[+]{1}[0-9]{11,14}/',
             'birth_date' => 'nullable|required_with:birth_month|required_with:birth_year|numeric',
             'birth_month' => 'nullable|required_with:birth_date|required_with:birth_year|numeric',

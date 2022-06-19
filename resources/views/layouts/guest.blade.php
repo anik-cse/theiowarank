@@ -12,10 +12,12 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/frontend/css/font-awesome.min.css') }}">
+            <!-- ALL CSS FILES -->
         <link rel="stylesheet" href="{{ mix('css/frontend/css/style.css') }}">
         <link rel="stylesheet" href="{{ mix('css/frontend/css/bootstrap.css') }}">
+        <!-- MOB.CSS ONLY FOR MOBILE AND TABLET VIEWS -->
         <link rel="stylesheet" href="{{ mix('css/frontend/css/mob.css') }}">
-        {{-- @yield('css') --}}
+        @yield('css')
     </head>
     <body>
         <!-- Preloader -->
@@ -37,5 +39,5 @@
     <script src="{{ mix('js/frontend/js/jquery.min.js') }}"></script>
     <script src="{{ mix('js/frontend/js/bootstrap.js') }}"></script>
     <script src="{{ mix('js/frontend/js/custom.js') }}"></script>
-    {{-- @stack('scripts') --}}
+    @stack('scripts')
 </html>

@@ -25,7 +25,7 @@
                             <span>{{ date('d M Y', strtotime($event->start_date)) }} - {{ date('d M Y', strtotime($event->end_date)) }}</span>
                             <h3>{{ $event->name }}</h3>
                             <p class="bold"><i class="fa fa-map-marker"></i> {{ $event->venue }}.</p>
-                            <a href="soccer.html">Read More</a>
+                            <a href="#">Read More</a>
                         </div>
                     </li>
                     @endforeach

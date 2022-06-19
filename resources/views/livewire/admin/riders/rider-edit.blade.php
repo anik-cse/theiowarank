@@ -72,7 +72,7 @@
                 <x-jet-input id="team" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="team" placeholder="Team" :value="old('team')" autocomplete="team" />
                 <x-jet-input-error for="team" class="mt-2" />
             </div>
-            <div class="col-span-12 sm:col-span-12 md:py-2">
+            {{-- <div class="col-span-12 sm:col-span-12 md:py-2">
                 <x-jet-label for="email" class="font-bold" value="{{ __('Email *') }}" />
                 <x-jet-input id="email" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="email" placeholder="your@mail.com" :value="old('email')" autocomplete="email" />
                 <x-jet-input-error for="email" class="mt-2" />
@@ -103,7 +103,7 @@
                         <x-jet-input-error for="birth_year" class="mt-2" />
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <x-button class="mt-2 bg-purple-500 hover:bg-purple-400" wire:click="update({{ $this->rider_id }})">
                 {{ __('Save') }}

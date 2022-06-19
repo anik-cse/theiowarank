@@ -10,6 +10,7 @@ class EventList extends Component
 {
     public $search, $view;
     use WithPagination;
+    protected $listeners = ['delete'];
 
 
     /**

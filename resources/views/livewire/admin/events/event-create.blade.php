@@ -103,11 +103,11 @@
                 <x-jet-input id="venue_name" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="venue" placeholder="Venue name" :value="old('venue')" autocomplete="venue_name" />
                 <x-jet-input-error for="venue" class="mt-2" />
 
-                <x-jet-input id="address_one" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="address_one" placeholder="Address" :value="old('address_one')" autocomplete="address_one" />
+                {{-- <x-jet-input id="address_one" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="address_one" placeholder="Address" :value="old('address_one')" autocomplete="address_one" />
                 <x-jet-input-error for="address_one" class="mt-2" />
 
                 <x-jet-input id="address_two" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="address_two" placeholder="Address" :value="old('address_one')" autocomplete="address_two" />
-                <x-jet-input-error for="address_two" class="mt-2" />
+                <x-jet-input-error for="address_two" class="mt-2" /> --}}
 
                 <x-jet-input id="city" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="city" placeholder="City" :value="old('city')" autocomplete="city" />
                 <x-jet-input-error for="city" class="mt-2" />
@@ -115,8 +115,8 @@
                 <x-jet-input id="region" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="region" placeholder="Region" :value="old('region')" autocomplete="region" />
                 <x-jet-input-error for="region" class="mt-2" />
 
-                <x-jet-input id="post_code" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="post_code" placeholder="Post Code" :value="old('post_code')" autocomplete="post_code" />
-                <x-jet-input-error for="post_code" class="mt-2" />
+                {{-- <x-jet-input id="post_code" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="post_code" placeholder="Post Code" :value="old('post_code')" autocomplete="post_code" />
+                <x-jet-input-error for="post_code" class="mt-2" /> --}}
                 
                 <div class="mt-2" wire:ignore>
                 <x-select style="width: 100%" 
@@ -151,7 +151,7 @@
                 </x-select>
                 <x-jet-input-error for="tier" class="mt-2" />
             </div>
-            <div class="col-span-12 sm:col-span-12 py-1">
+            {{-- <div class="col-span-12 sm:col-span-12 py-1">
                 <x-jet-label for="organization" class="font-bold" value="{{ __('Organization') }}" />
                 <x-jet-input id="organization" class="block mt-2 w-full" type="text" wire:model.debounce.800ms="organization" placeholder="Organization" :value="old('organization')" autocomplete="organization" />
                 <x-jet-input-error for="organization" class="mt-2" />
@@ -165,7 +165,7 @@
                 <x-jet-label for="phone" class="font-bold" value="{{ __('Phone') }}" />
                 <x-jet-input id="phone" class="block mt-2 w-2/4" type="tel" wire:model.debounce.800ms="phone" placeholder="+11234567890" :value="old('phone')" autocomplete="phone" />
                 <x-jet-input-error for="phone" class="mt-2" />
-            </div>
+            </div> --}}
 
             <x-button class="mt-2 bg-purple-500 hover:bg-purple-400" wire:click="create">
                 {{ __('Save') }}

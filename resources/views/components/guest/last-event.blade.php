@@ -1,6 +1,6 @@
 <section>
     @if($last_event->races()->exists())
-    <div class="uc">
+    <div class="uc" style="background: url(../images/book.jpg) no-repeat; background-size:cover;">
         <div class="lp uc1">
             <div class="row">
                 <div class="hom-tick-book">
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                                        
-                    <a href="soccer.html" class="hvr-sweep-to-right">View Ranks</a>
+                    <a id="viewRank" class="hvr-sweep-to-right">View Ranks</a>
                 </div>
             </div>
         </div>

@@ -5,14 +5,14 @@
         <ul>
             <!-- MAIN MENU -->
             <li>
-                <a href="main.html" class="menu-lef-act"><img src="images/icon/s1.png" alt=""> Home</a>
+                <a href="/" class="menu-lef-act"><img src="images/icon/s1.png" alt=""> Home</a>
             </li>
            
             <li>
-                <a href="events.html"><img src="images/icon/f6.png" alt=""> Events</a>
+                <a id="sideBarEvent"><img src="images/icon/f6.png" alt=""> Events</a>
             </li>
             <li>
-                <a href="team-ranking.html"><img src="images/icon/r1.png" alt=""> Ranking</a>
+                <a id="sideBarRanking"><img src="images/icon/r1.png" alt=""> Ranking</a>
             </li>           
         </ul>
     </div>
