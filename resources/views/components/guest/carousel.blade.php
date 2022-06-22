@@ -7,7 +7,7 @@
             {{-- <div class="numbertext">1 / 8</div> --}}
             <a href="#"><img src="{{ $slide->getFirstMediaUrl('slider') }}" alt="">
             </a>
-            <div class="text">{{ $slide->title }}</div>
+            {{-- <div class="text">{{ $slide->title }}</div> --}}
         </div>
         @endforeach
         <!-- SLIDER NAVIGATION -->

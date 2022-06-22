@@ -43,8 +43,8 @@ class SliderController extends Controller
         $validated = $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'animation_id' => 'nullable',
-            'title' => 'required|max:255',
-            'sort_description' => 'required',
+            'title' => 'nullable|max:255',
+            'sort_description' => 'nullable',
             'long_description' => 'nullable',
         ]);
 
@@ -95,8 +95,8 @@ class SliderController extends Controller
         // Validating data from the Request 
         $validated = $request->validate([
             'animation_id' => 'nullable',
-            'title' => 'required|max:255',
-            'sort_description' => 'required',
+            'title' => 'nullable|max:255',
+            'sort_description' => 'nullable',
             'long_description' => 'nullable',
             'status' => 'required',
         ]);
