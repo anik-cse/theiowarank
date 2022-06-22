@@ -1,5 +1,10 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+</head>
+<body>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
@@ -33,4 +38,5 @@
             </div>
         </form>
     </x-jet-authentication-card>
-</x-guest-layout>
+</body>
+</html>

@@ -29,7 +29,7 @@ class Ranking extends Component
         }else{
             $race_results = Race::with('results', 'events')->first();
         }
-        // dd($race_results);
+        // dd($race_results->id);
         return view('livewire.guest.ranking', compact('events','races', 'race_results'));
     }
 }

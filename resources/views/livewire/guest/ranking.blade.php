@@ -21,7 +21,9 @@
                                 <th class="e_h1">Place</th>
                                 <th>Result</th>
                             </tr> --}}
+                            
                             @foreach($races as $key => $race)
+                            @if ($race->events)
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>
@@ -34,6 +36,7 @@
                                 <td><a wire:click="getResult({{ $race->id }})" class="link-btn" style="cursor: pointer;">view result</a>
                                 </td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -43,8 +46,10 @@
             <div class="col-md-6 eve-res">
                 <div class="events ev-po-2 ev-po-com">
                     <div class="ev-po-title ev-po-title-1" style="    background: url(../images/trends/10.jpg) no-repeat #000; background-size:cover;">
+                        @if ($race_results->events)
                         <h3>{{ $race_results->name }} {{ date('Y', strtotime($race_results->events->end_date)) }}</h3>
                         <p>Top 10 {{ $race_results->name }}</p>
+                        @endif
                     </div>
                     <table class="myTable">
                         <tbody>

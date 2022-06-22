@@ -24,7 +24,7 @@
                           <input wire:model.debounce.800ms="search" type="text" class="px-2 py-1 border border-gray-300 rounded focus:outline-none" placeholder="Search...">
                         </div>
                     </div>
-                    <table class="table-fixed w-full">
+                    <table class="table-fixed w-full dark:text-gray-400">
                         <thead class="border-b-2">
                             <th class="px-4 py-3" width="20%">
                               <div class="flex space-x-2">
@@ -75,7 +75,7 @@
                         </thead>
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800" x-cloak>
                             @forelse ($riders as $rider)
-                            <tr class="hover:bg-gray-200 text-gray-900 text-xs">
+                            <tr class="hover:bg-gray-200 text-gray-900 dark:text-gray-400 text-xs">
                                 <td class="py-3 px-4">
                                     {{ $rider->first_name }} {{ $rider->last_name }}
                                 </td>
